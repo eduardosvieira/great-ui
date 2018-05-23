@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<!-- SECTIONS:  HEADER-->
+<section class="section red darken-3 white-text">
+  <div class="container">
+    <div class="col s12">
+      <a href="{{url_for('dashboard')}}" class="breadcrumb">Dashboard</a>
+      <a href="{{url_for('catalog')}}" class="breadcrumb">Catalog</a>
+    </div>
+  </div>
+</section>
+<section class="section section-catalog">
+  <div class="container">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Catálogo de Jogos</span>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!-- SECTIONS:  HEADER-->
+<section class="section blue darken-3 white-text">
+  <div class="container">
+    <div class="col s12 ">
+      <a href="{{url_for('dashboard')}}" class="breadcrumb">Dashboard</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-turmas">
+  <div class="container">
+
+  </div>
+</section>
+
+<section class="section section-boxes center">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 xl3">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Authoring</span>
+          </div>
+          <div class="card-action">
+          <a href="authoring" class="btn btn-medium blue darken-1 white-text"><i class="fa fa-cogs"></i> ENTRAR</a>
+          </div>
+        </div>
+
+        <div class="card blue darken-2">
+          <div class="card-content row">
+            <span class="card-title white-text">Jogos Criados</span>
+            <div class="col offset-s1 s2">
+              <i class="fa fa-gamepad fa-5x blue-text text-lighten-2"></i>
+            </div>
+            <div class="col s9">
+              <h2 class="white-text card-stats-number truncate">2</h2>
+            </div>
+          </div>
+          <div class="card-action">
+          <a href="authoring" class="btn btn-xsmall blue darken-1 white-text"><i class="fa fa-list"></i></a>
+          <a href="authoring" class="btn btn-xsmall blue darken-1 white-text"><i class="fa fa-plus"></i></a>
+          </div>
+        </div>
+        <div class="card blue darken-2">
+          <div class="card-content row">
+            <span class="card-title white-text">Desafios</span>
+            <div class="col offset-s1 s2">
+              <i class="fa fa-check-square fa-5x blue-text text-lighten-2"></i>
+            </div>
+            <div class="col s9">
+              <h2 class="white-text card-stats-number truncate">26</h2>
+            </div>
+          </div>
+          <div class="card-action">
+          <a href="authoring" class="btn btn-xsmall blue darken-1 white-text"><i class="fa fa-list"></i></a>
+          <a href="authoring" class="btn btn-xsmall blue darken-1 white-text"><i class="fa fa-plus"></i></a>
+          </div>
+        </div>
+
+      </div>
+      <div class="col s12 m6 xl3">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Catalog</span>
+          </div>
+          <div class="card-action">
+          <a href="{{url_for('catalog')}}" class="btn btn-medium red darken-1 white-text"><i class="fa fa-book"></i> ENTRAR</a>
+          </div>
+        </div>
+        <div class="card red darken-2">
+          <div class="card-content row">
+            <span class="card-title white-text">Jogos Sugeridos</span>
+            <div class="col offset-s1 s2">
+              <i class="fa fa-gamepad fa-5x red-text text-lighten-2"></i>
+            </div>
+            <div class="col s9">
+              <h2 class="white-text card-stats-number truncate">3</h2>
+            </div>
+          </div>
+          <div class="card-action">
+            <a href="{{url_for('catalog')}}" class="btn btn-xsmall red darken-1 white-text"><i class="fa fa-play"></i></a>
+          </div>
+        </div>
+        <div class="card red darken-2">
+          <div class="card-content row">
+            <span class="card-title white-text">Jogo Aleatório</span>
+            <div class="col s12">
+              <i class="fa fa-random fa-5x red-text text-lighten-2"></i>
+            </div>
+
+          </div>
+          <div class="card-action">
+            <a href="{{url_for('catalog')}}" class="btn btn-xsmall red darken-1 white-text"><i class="fa fa-play"></i> jogar</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="col s12 m6 xl3">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Game Center</span>
+          </div>
+          <div class="card-action">
+          <a href="{{url_for('gamecenter')}}" class="btn btn-medium yellow darken-1 black-text"><i class="fa fa-trophy"></i> ENTRAR</a>
+          </div>
+        </div>
+        <div class="card yellow darken-2">
+          <div class="card-content row">
+            <span class="card-title black-text truncate">Raking Geral</span>
+            <div class="col offset-s1 s2">
+              <i class="fa fa-trophy fa-5x yellow-text text-darken-3"></i>
+            </div>
+            <div class="col s9">
+              <h2 class="black-text card-stats-number truncate">3</h2>
+            </div>
+          </div>
+          <div class="card-action">
+            <a href="{{url_for('gamecenter')}}" class="btn btn-xsmall yellow darken-1 white-text"><i class="fa fa-play"></i></a>
+          </div>
+        </div>
+        <div class="card yellow darken-2">
+          <div class="card-content row card-stats">
+            <span class="card-title black-text truncate">Ultima Pontuação</span>
+            <div class="col offset-s1 s2">
+              <i class="fa fa-trophy fa-5x yellow-text text-darken-3"></i>
+            </div>
+            <div class="col s9">
+              <h2 class="black-text card-stats-number truncate">65%</h2>
+            </div>
+          </div>
+          <div class="card-action">
+            <a href="{{url_for('gamecenter')}}" class="btn btn-xsmall yellow darken-1 black-text"><i class="fa fa-play"></i> JOGAR NOVAMENTE</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6 xl3">
+        <div class="card ">
+          <div class="card-content">
+            <span class="card-title">Classroom</span>
+          </div>
+          <div class="card-action">
+          <a href="{{url_for('classroom')}}" class="btn btn-medium green darken-2 white-text"><i class="fa fa-graduation-cap"></i> ENTRAR</a>
+          </div>
+        </div>
+        <div class="card green">
+          <div class="card-content row card-stats">
+            <span class="card-title black-text truncate">Turmas Ativas</span>
+            <div class="col offset-s1 s2">
+              <i class="fa fa-folder-open fa-5x green-text text-lighten-1"></i>
+            </div>
+            <div class="col s9">
+              <h2 class="black-text card-stats-number truncate">3</h2>
+            </div>
+          </div>
+          <div class="card-action">
+            <a href="{{url_for('classroom')}}" class="btn btn-xsmall green darken-1 white-text"><i class="fa fa-list"></i> listar</a>
+          </div>
+        </div>
+        <div class="card green">
+          <div class="card-content row card-stats">
+            <span class="card-title black-text truncate">Aguardando Correção</span>
+            <div class="col offset-s1 s2">
+              <i class="fa fa-star-half fa-5x green-text text-lighten-1"></i>
+            </div>
+            <div class="col s9">
+              <h2 class="black-text card-stats-number truncate">7</h2>
+            </div>
+          </div>
+          <div class="card-action">
+            <a href="authoring" class="btn btn-xsmall green darken-1 white-text"><i class="fa fa-list"></i> listar</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

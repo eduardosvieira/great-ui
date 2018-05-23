@@ -1,0 +1,154 @@
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+
+	::-webkit-input-placeholder { /* WebKit browsers */
+		font-family: 'Source Sans Pro', sans-serif;
+			color:    white;
+		font-weight: 300;
+	}
+}
+
+.breadcrumb {
+	/* font-size: 30px !important;
+	padding-top: 20px; */
+	font-size: 25px;
+
+}
+
+.loader{
+  position: absolute;;
+  top:40%;
+  left: 47%;
+}
+
+.card-stats-number{
+	margin: 0;
+}
+
+
+.info-header {
+  width: 50%;
+  margin: auto;
+  border-bottom: 1px #ddd solid;
+  margin-bottom: 3rem;
+}
+.nav-wrapper img{
+  width:50px;
+  height:50px;
+  margin-right : 5px;
+}
+.title {
+  font-size: 50px;
+  font-family: : "Segoe UI" !important;
+}
+.main-nav{
+  padding-top: 20px;
+  min-height: 110px;
+  opacity: 0.9;
+}
+
+.regular-nav{
+  padding-top: 5px;
+  min-height: 60px;
+  opacity: 1;
+}
+
+.primary-overlay{
+  background: rgba(50, 146, 166, 0.8);
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.blue-overlay{
+  background: rgba(31, 134, 225, 0.8);
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.main-header{
+  background: url(../img/classroom.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 20vh;
+  min-height: 490px;
+  color:#fff;
+  position: relative;
+}
+
+.main-content{
+	    min-height: 72vh;
+}
+
+
+.authoring-header{
+  background: url(../img/gamecenter.jpeg);
+  background-size: cover;
+  background-position: center;
+  height: 88vh;
+  min-height: 490px;
+  color:#fff;
+  position: relative;
+}
+
+
+.footer{
+  height: 12vh;
+}
+
+.card-modulos{
+  min-height: 170px;
+}
+
+.footer p {
+	margin-top: 12px;
+}
+
+.main-header .showcase{
+  padding-top: 90px;
+}
+
+.scroll-icon{
+  position: absolute;
+  bottom: 5%;
+  left: 47%;
+  opacity:0.5;
+}
+
+.box {
+  padding: 40px 10px !important;
+}
+
+.box h4{
+  padding-bottom: 30px;
+}
+
+.section-header{
+	margin-top: 30px;
+}
+
+.section-white-space{
+	padding-top: 47px !important;
+
+}
+
+.section-boxes .row{
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .main-header{
+    height: 50vh;
+  }
+
+}

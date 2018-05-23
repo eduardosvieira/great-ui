@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<!-- SECTIONS:  HEADER-->
+<section class="section blue darken-3 white-text">
+  <div class="container">
+    <div class="col s12">
+      <a href="{{url_for('dashboard')}}" class="breadcrumb">Dashboard</a>
+      <a href="{{url_for('authoring')}}" class="breadcrumb">Authoring</a>
+    </div>
+  </div>
+</section>
+<section class="section section-turmas">
+  <div class="container">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Jogos Criados</span>
+
+      </div>
+      <div class="card-action">
+        <ul class="pagination">
+          <li class="disabled">
+            <a href="#!" class="teal-text">
+              <i class="material-icons">chevron_left</i>
+            </a>
+          </li>
+          <li class="active blue darken-2">
+            <a href="#!" class="white-text">1</a>
+          </li>
+          <li class="waves-effect">
+            <a href="#!" class="teal-text">2</a>
+          </li>
+          <li class="waves-effect">
+            <a href="#!" class="teal-text">3</a>
+          </li>
+
+          <li class="waves-effect">
+            <a href="#!" class="teal-text">
+              <i class="material-icons">chevron_right</i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% set active_page = 'page.index' %}
+
+{% block body %}
+
+<!-- SECTIONS:  ASSINAR-->
+<section class="section sections-newsletter grey darken-3">
+  <div class="container">
+    <div class="row">
+      <p class="flow-text white-text">Quer ficar por dentro das novidades?</p>
+      <div class="col s12 m4">
+        <div class="input-field">
+          <input class="input-newsletter white grey-text" placeholder="Informar Nome" type="text" id="nome-input">
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="input-field">
+          <input class="input-newsletter white grey-text" placeholder="Informar Email"  type="text" id="email-input">
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="input-field">
+          <button class="btn btn-inscrever blue darken-3 btn-newsletter"><i class="fa fa-envelope"></i>  Inscreva-se</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section class="section section-boxes center">
+  <div class="row">
+    <div class="info-header">
+      <h3 class="center"><span class="blue-text text-darken-1">MÓDULOS</span></h3>
+      <p class="flow-text">Conheça os Módulos da Ferramenta</p>
+
+    </div>
+
+    <div class="container">
+
+    </div>
+  </div>
+  <div class="row" id="about">
+    <div class="container">
+      <div class="col s12 m6 xl3">
+        <div class="card">
+          <div class="card-content card-modulos">
+            <span class="card-title">Authoring</span>
+            <p>Ambiente web para criar jogos com base em templates pré-codificados.</p>
+          </div>
+          <div class="card-action">
+          <a href="authoring" class="btn btn-medium blue darken-1 white-text"><i class="fa fa-cogs"></i> Acessar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 xl3">
+        <div class="card">
+          <div class="card-content card-modulos">
+            <span class="card-title">Catalog</span>
+            <p>Catálogo de jogos para o usuário. Indexado por nome e por tipo de conteúdo.</p>
+          </div>
+          <div class="card-action">
+          <a href="#" class="btn btn-medium red darken-1 white-text"><i class="fa fa-book"></i> Acessar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 xl3">
+        <div class="card">
+          <div class="card-content card-modulos">
+            <span class="card-title">Game Center</span>
+            <p>Acompanhar o progresso por usuário, últimos placares e compartilhar resultado com amigos.</p>
+          </div>
+          <div class="card-action">
+          <a href="#" class="btn btn-medium yellow darken-1 black-text"><i class="fa fa-trophy"></i> Acessar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6 xl3">
+        <div class="card ">
+          <div class="card-content card-modulos">
+            <span class="card-title">Classroom</span>
+            <p>Gerenciamento de jogos em turmas de Graduação</p>
+          </div>
+          <div class="card-action">
+          <a href="/classroom" class="btn btn-medium green darken-1 black-text"><i class="fa fa-graduation-cap"></i> Acessar</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!-- SECTIONS:  HEADER-->
+<section class="section green darken-3 white-text">
+  <div class="container">
+    <div class="col s12 ">
+      <a href="{{url_for('dashboard')}}" class="breadcrumb">Dashboard</a>
+      <a href="{{url_for('classroom')}}" class="breadcrumb">Classroom</a>
+      <a href="{{url_for('disciplinas')}}" class="breadcrumb">Disciplinas</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="section section-turmas">
+  <div class="container">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Disciplinas</span>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Disciplina</th>
+              <th class="hide-on-small-only"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for disciplina in disciplinas %}
+            <tr>
+                <td>{{disciplina.id}}</td>
+                <td>{{disciplina.name}}</td>
+                 <td class="hide-on-small-only">
+                    <a href="{{ url_for('disciplina', id=disciplina.id)}}" class="btn btn-icon green">
+                        <span class="icon"><i class="fa fa-edit"></i></span>
+                    </a>
+                    <a href="{{ url_for('disciplina', id=disciplina.id)}}" class="btn btn-icon green">
+                        <span class="icon"><i class="fa fa-search"></i></span>
+                    </a>
+                    <a href="{{ url_for('disciplina', id=disciplina.id)}}" class="btn btn-icon green">
+                        <span class="icon"><i class="fa fa-sitemap"></i></span>
+                    </a>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+      <div class="card-action">
+        <ul class="pagination">
+          <li class="disabled">
+            <a href="#!" class="teal-text">
+              <i class="material-icons">chevron_left</i>
+            </a>
+          </li>
+          <li class="active green darken-2">
+            <a href="#!" class="white-text">1</a>
+          </li>
+          <li class="waves-effect">
+            <a href="#!" class="teal-text">2</a>
+          </li>
+          <li class="waves-effect">
+            <a href="#!" class="teal-text">3</a>
+          </li>
+
+          <li class="waves-effect">
+            <a href="#!" class="teal-text">
+              <i class="material-icons">chevron_right</i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

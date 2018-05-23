@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="{{ url_for('static', filename="css/materialize.min.css")}}"/>
+   <link rel="stylesheet" href="{{ url_for('static', filename="css/dashboard.css")}}"/>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+
+    <title>GReAT</title>
+  </head>
+  <body>
+
+    {% if active_page == 'page.index' %}
+        {% include 'includes/_header.html' %}
+    {% else %}
+
+        {% include 'includes/_navbar.html' %}
+        <section class="section-white-space"></section>
+    {% endif %}
+
+    {% block body %}{% endblock %}
+
+     <section class="section footer grey darken-3 white-text center">
+       <p class="flow-text">LAWS - UFMA &copy 2018</p>
+     </section>
+     <!-- -->
+     <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script type="text/javascript" src="{{ url_for('static', filename="js/materialize.min.js")}}"></script>
+     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+     <script type="text/javascript" src="{{ url_for('static', filename="js/script.js")}}"></script>
+
+
+  </body>
+</html>

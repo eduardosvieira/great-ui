@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+  <html>
+
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename="css/materialize.min.css")}}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename="css/login.css")}}"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <title>GReAT Classroom</title>
+  </head>
+
+  <body>
+    {% block body %}{% endblock %}
+    <section class="section footer grey darken-3 white-text center">
+      <p class="flow-text">LAWS &copy2018</p>
+    </section>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Init Sidenav
+        $('.button-collapse').sideNav();
+        // scrollFire
+
+        Materialize.scrollFire(options);
+
+      });
+    </script>
+  </body>
+</html>
