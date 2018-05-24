@@ -57,3 +57,14 @@ class Class():
             return True
         except:
             return False
+
+
+    def deleteClassById(self, classId=0):
+        try:
+            db.classes.remove({
+                "_id": ObjectId(classId)
+            })
+
+            return True
+        except:
+            return False
