@@ -33,3 +33,14 @@ class Notice():
             return notices
         except:
             return None
+
+
+    def getNoticeById(self, noticeId):
+        try:
+            notice = db.notices.find_one({
+                "_id": ObjectId(noticeId)
+            })
+
+            return notice
+        except:
+            return None
