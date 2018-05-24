@@ -62,3 +62,13 @@ class User():
             return True
         except:
             return False
+
+    def deleteUserById(self, userId=0):
+        try:
+            db.users.remove({
+                "_id": ObjectId(userId)
+            })
+
+            return True
+        except:
+            return False
