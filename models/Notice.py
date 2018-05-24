@@ -22,3 +22,14 @@ class Notice():
             return True
         except:
             return False
+
+
+    def getAllNoticesByClassId(self, classId):
+        try:
+            notices = db.notices.find({
+                "class._id": ObjectId(classId)
+            })
+
+            return notices
+        except:
+            return None
