@@ -35,3 +35,17 @@ class User():
                 return False
         except:
             return False
+
+
+    def getUserById(self, userId=0):
+        try:
+            user = db.users.find_one({
+                "_id": ObjectId(userId)
+            })
+
+            return user
+
+        except:
+            return None
+
+    
