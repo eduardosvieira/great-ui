@@ -44,3 +44,17 @@ class Notice():
             return notice
         except:
             return None
+
+
+    def updateNotice(self, notice=None):
+        try:
+            db.notices.update({
+                "_id": ObjectId(notice.id)
+            }, {"$set": {
+                "title": notice.title,
+                "description": notice.description
+            }})
+
+            return True
+        except:
+            return False
