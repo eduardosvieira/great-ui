@@ -19,3 +19,18 @@ class User():
 
         except:
             return False;
+
+
+    def loginUser(self, email="", password=""):
+        try:
+            user = db.users.find_one({
+                "email": email,
+                "password": password
+            })
+
+            if user:
+                return True
+            else:
+                return False
+        except:
+            return False
