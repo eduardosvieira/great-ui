@@ -43,3 +43,14 @@ class Invite():
             return invite
         except:
             return None
+
+
+    def deleteInviteById(self, inviteId=0):
+        try:
+            db.invites.remove({
+                "_id": ObjectId(inviteId)
+            })
+
+            return True
+        except:
+            return False
