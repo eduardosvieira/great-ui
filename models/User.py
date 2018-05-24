@@ -52,9 +52,6 @@ class User():
 
     def updateUser(self, user=None):
         try:
-            db.accounts.update(
-            {"_id": ObjectId(self.id)}, {"$set": {"name": self.name}})
-
             db.users.update({
                 "_id": ObjectId(user.id)
             }, {"$set": {

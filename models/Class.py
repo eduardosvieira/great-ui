@@ -43,3 +43,17 @@ class Class():
             return c
         except:
             return None
+
+
+    def updateClass(self, class=None):
+        try:
+            db.classes.update({
+                "_id": ObjectId(class.id)
+            }, {"$set": {
+                "name": class.name,
+                "description": class.description,
+            }})
+
+            return True
+        except:
+            return False
