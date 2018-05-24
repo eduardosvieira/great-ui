@@ -5,3 +5,17 @@ class User():
         self.name = name
         self.email = email
         self.password = password
+
+
+    def signUpUser(self, user=None):
+        try:
+            db.users.insert({
+                "name": user.name,
+                "email": user.email,
+                "password": user.password
+            })
+
+            return True;
+
+        except:
+            return False;
