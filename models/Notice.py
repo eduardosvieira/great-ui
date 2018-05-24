@@ -58,3 +58,13 @@ class Notice():
             return True
         except:
             return False
+
+    def deleteNoticeById(self, noticeId=0):
+        try:
+            db.notices.remove({
+                "_id": ObjectId(noticeId)
+            })
+
+            return True
+        except:
+            return False
