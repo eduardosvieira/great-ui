@@ -1,4 +1,5 @@
 from bson.objectid import ObjectId
+from app import db
 
 class User():
     def __init__(self, id=0, name="", email="", password=""):
@@ -51,13 +52,16 @@ class User():
 
     def updateUser(self, user=None):
         try:
+            db.accounts.update(
+            {"_id": ObjectId(self.id)}, {"$set": {"name": self.name}})
+
             db.users.update({
                 "_id": ObjectId(user.id)
-            }, "$set": {
+            }, {"$set": {
                 "name": user.name,
                 "email": user.email,
                 "password": user.password
-            })
+            }})
 
             return True
         except:

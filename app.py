@@ -1,10 +1,14 @@
 from flask import Flask, render_template, flash, redirect, url_for, session,logging
 from data import *
 from forms import *
-
+from pymongo import MongoClient
 
 app = Flask (__name__)
 
+client = MongoClient('mongodb://localhost:27017/')
+db = client.classroomdb
+
+from models import User
 
 # @app.route('/registrar')
 # def registrar():
