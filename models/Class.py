@@ -22,3 +22,16 @@ class Class():
             return True
         except:
             return False
+
+
+    def getAllClassesByUserId(self, userId):
+        try:
+            classes = db.classes.find({
+                "user._id": ObjectId(userId)
+            })
+
+            return classes
+        except:
+            return None
+
+    
