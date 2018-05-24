@@ -23,7 +23,6 @@ class Class():
         except:
             return False
 
-
     def getAllClassesByUserId(self, userId):
         try:
             classes = db.classes.find({
@@ -33,5 +32,3 @@ class Class():
             return classes
         except:
             return None
-
-    
