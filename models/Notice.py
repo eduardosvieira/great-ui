@@ -8,3 +8,17 @@ class Notice():
         self.description = description
         self.class = class
         self.createdAt = createdAt
+
+
+    def createNotice(self, notice=None):
+        try:
+            db.notices.insert({
+                "title": notice.title,
+                "description": notice.description,
+                "class": notice.class,
+                "createdAt": invite.createdAt
+            })
+
+            return True
+        except:
+            return False
