@@ -48,4 +48,17 @@ class User():
         except:
             return None
 
-    
+
+    def updateUser(self, user=None):
+        try:
+            db.users.update({
+                "_id": ObjectId(user.id)
+            }, "$set": {
+                "name": user.name,
+                "email": user.email,
+                "password": user.password
+            })
+
+            return True
+        except:
+            return False
