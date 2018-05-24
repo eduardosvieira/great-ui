@@ -8,3 +8,17 @@ class Class():
         self.description = description
         self.user = user
         self.createdAt = createdAt
+
+
+    def createClass(self, class=None):
+        try:
+            db.classes.insert({
+                "name": class.name,
+                "description": class.description,
+                "createdAt": class.createdAt,
+                "user": class.user
+            })
+
+            return True
+        except:
+            return False
