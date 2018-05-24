@@ -32,3 +32,14 @@ class Invite():
             return invites
         except:
             return None
+
+
+    def getInviteById(self, inviteId):
+        try:
+            invite = db.invites.find_one({
+                "_id": ObjectId(inviteId)
+            })
+
+            return invite
+        except:
+            return None
