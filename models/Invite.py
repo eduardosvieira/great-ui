@@ -21,3 +21,14 @@ class Invite():
             return True
         except:
             return False
+
+
+    def getAllInvitesByClassId(self, classId):
+        try:
+            invites = db.invites.find({
+                "class._id": ObjectId(classId)
+            })
+
+            return invites
+        except:
+            return None
