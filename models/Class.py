@@ -32,3 +32,14 @@ class Class():
             return classes
         except:
             return None
+
+
+    def getClassById(self, classId):
+        try:
+            c = db.classes.find_one({
+                "_id": ObjectId(classId)
+            })
+
+            return c
+        except:
+            return None
