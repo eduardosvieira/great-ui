@@ -1,3 +1,4 @@
+from bson.objectid import ObjectId
 
 class User():
     def __init__(self, id=0, name="", email="", password=""):
