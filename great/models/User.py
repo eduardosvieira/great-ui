@@ -1,5 +1,7 @@
+from flask import session
 from bson.objectid import ObjectId
-from app import db
+
+from great import db
 
 class User():
     def __init__(self, id=0, name="", email="", password=""):
@@ -24,17 +26,15 @@ class User():
 
 
     def loginUser(self, email="", password=""):
-        try:
-            user = db.users.find_one({
-                "email": email,
-                "password": password
-            })
+        user = db.users.find_one({
+            "email": email,
+            "password": password
+        })
 
-            if user:
-                return True
-            else:
-                return False
-        except:
+        if user:
+            session["_id"] = str(user["_id"])
+            return True
+        else:
             return False
 
 

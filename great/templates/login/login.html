@@ -28,10 +28,10 @@
     <ul class="side-nav" id='mobile-nav'>
       <h4 class="black-text text-darken-4 center">GReAT</h4>
       <li><div class="divider"></div></li>
-      <li><a href="{{url_for('authoring')}}"><i class="fa fa-cogs grey-text text-darken-4"></i> Authoring</a></li>
-      <li><a href="{{url_for('catalog')}}"><i class="fa fa-book grey-text text-darken-4"></i> Catalog</a></li>
-      <li><a href="{{url_for('gamecenter')}}"><i class="fa fa-trophy grey-text text-darken-4"></i> Game Center</a></li>
-      <li><a href="{{url_for('login')}}"><i class="fa fa-graduation-cap grey-text text-darken-4"></i> Classroom</a></li>
+      <li><a href=""><i class="fa fa-cogs grey-text text-darken-4"></i> Authoring</a></li>
+      <li><a href=""><i class="fa fa-book grey-text text-darken-4"></i> Catalog</a></li>
+      <li><a href=""><i class="fa fa-trophy grey-text text-darken-4"></i> Game Center</a></li>
+      <li><a href=""><i class="fa fa-graduation-cap grey-text text-darken-4"></i> Classroom</a></li>
       <li><div class="divider"></div></li>
       <li><a href="#login-modal" class="btn blue white-text darken-3 modal-trigger" href="login.html">Login</a></li>
     </ul>
@@ -47,20 +47,20 @@
         </div>
         <div class="col s12 m6 main-text center">
           <div class="card-panel z-depth-5">
-            <form class="login-form">
+            <form class="login-form" method="POST" action="/login/">
               <div class="row">
               </div>
               <div class="row">
                 <div class="input-field col s12 black-text">
                   <i class="material-icons prefix">mail_outline</i>
-                  <input class="validate" id="email" type="email">
+                  <input class="validate" id="email" type="email" name="email">
                   <label for="email" data-error="wrong" data-success="right">Email</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 black-text">
                   <i class="material-icons prefix">lock_outline</i>
-                  <input id="password" type="password">
+                  <input id="password" type="password" name="password">
                   <label for="password">Senha</label>
                 </div>
               </div>
@@ -72,7 +72,7 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <a href="{{url_for('dashboard')}}" class="btn btn-large teal darken-3 waves-effect waves-light col s12">Login</a>
+                  <input type="submit" class="btn btn-large teal darken-3 waves-effect waves-light col s12" value="Login">
                 </div>
               </div>
             </form>
@@ -84,4 +84,5 @@
     </div>
   </div>
 </header>
+
 {% endblock %}
