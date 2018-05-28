@@ -15,4 +15,4 @@ def classroom_index():
         return render_template("classroom.html", classes=classes)
 
     # Redireciona o usuário para página de login
-    return redirect("/classroom/login/")
+    return redirect("/login/")
