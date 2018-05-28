@@ -5,11 +5,10 @@ from pymongo import MongoClient
 
 app = Flask (__name__)
 
-app.config["SECRET_KEY"] = "sjakjsaus8as9s997"
+app.config["SECRET_KEY"] = "sjakjs45454s@#4s8as9s997"
 
 client = MongoClient('mongodb://localhost:27017/')
 db = client.classroomdb
-
 
 @app.route('/')
 def index():
@@ -19,7 +18,7 @@ def index():
 def register():
     return render_template('registrar.html')
 
-@app.route('/dashboard')
+@app.route('/dashboard/')
 def dashboard():
     return render_template('dashboard.html')
 
