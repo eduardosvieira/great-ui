@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from app import db
+from great import db
 
 class Notice():
     def __init__(self, id=0, title="", description="", class=None, createdAt=""):

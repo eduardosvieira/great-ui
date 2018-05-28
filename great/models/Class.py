@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from app import db
+from great import db
 
 class Class():
     def __init__(self, id=0, name="", description="", user=None, createdAt=""):
@@ -10,13 +10,13 @@ class Class():
         self.createdAt = createdAt
 
 
-    def createClass(self, class=None):
+    def createClass(self, classe=None):
         try:
             db.classes.insert({
-                "name": class.name,
-                "description": class.description,
-                "createdAt": class.createdAt,
-                "user": class.user
+                "name": classe.name,
+                "description": classe.description,
+                "createdAt": classe.createdAt,
+                "user": classe.user
             })
 
             return True
@@ -45,13 +45,13 @@ class Class():
             return None
 
 
-    def updateClass(self, class=None):
+    def updateClass(self, classe=None):
         try:
             db.classes.update({
-                "_id": ObjectId(class.id)
+                "_id": ObjectId(classe.id)
             }, {"$set": {
-                "name": class.name,
-                "description": class.description,
+                "name": classe.name,
+                "description": classe.description,
             }})
 
             return True

@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from app import db
+from great import db
 
 class Invite():
     def __init__(self, id=0, user=None, class=None, createdAt="", status=""):
