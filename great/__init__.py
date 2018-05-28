@@ -5,6 +5,8 @@ from pymongo import MongoClient
 
 app = Flask (__name__)
 
+app.config["SECRET_KEY"] = "sjakjsaus8as9s997"
+
 client = MongoClient('mongodb://localhost:27017/')
 db = client.classroomdb
 

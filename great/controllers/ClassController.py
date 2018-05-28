@@ -7,7 +7,7 @@ from great.models.Class import Class
 @app.route("/classroom/", methods=["GET"])
 def classroom_index():
     # Verifica se o usuário está logado, procurando pelo email dele na sessão
-    if "email" in session:
+    if "_id" in session:
         # Pegue do banco de dados as turmas criadas pelo usuário
         classes = Class().getAllClassesByUserId(session["_id"])
 
