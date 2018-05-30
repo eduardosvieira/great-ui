@@ -20,13 +20,23 @@ def classroom_index():
 
 @app.route("/classroom/classes/", methods=["POST"])
 def create_class():
-    name = request.form.get("name")
-    description = request.form.get("description")
-    createdAt = request.form.get("createdAt")
-    user = User().getUserById(session["_id"])
+    try:
+        name = request.form.get("name")
+        description = request.form.get("description")
+        createdAt = request.form.get("createdAt")
+        user = User().getUserById(session["_id"])
 
-    classe = Class(name=name, description=description, user=user, createdAt=createdAt)
+        classe = Class(name=name, description=description, user=user, createdAt=createdAt)
 
-    classe.createClass(classe)
+        classe.createClass(classe)
 
-    return "OK", 200
+        return "OK", 200
+    except:
+        return "Error", 400
+
+
+@app.route("/classroom/classes/<class_id>/", methods=["GET"])
+def get_class(class_id):
+    classe = Class().getClassById(class_id)
+
+    return classe
