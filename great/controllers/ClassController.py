@@ -40,3 +40,14 @@ def get_class(class_id):
     classe = Class().getClassById(class_id)
 
     return classe
+
+@app.route("/classroom/classes/<class_id>/", methods=["PUT"])
+def update_class(class_id):
+    name = request.form.get("name")
+    description = request.form.get("description")
+
+    classe = Class(name=name, description=description)
+
+    classe.updateClass(classe)
+
+    return "OK", 200
