@@ -14,7 +14,7 @@ $(document).ready(function(event){
     $.ajax({
       url: URL + "/classroom/classes/",
       type: "POST",
-      data: {"name": name, "description": description},
+      data: {"name": name, "description": description, "createdAt": Date()},
       success: function(data) {
         window.location.replace("/classroom/");
       },

@@ -1,7 +1,8 @@
-from flask import session, render_template, redirect
+from flask import session, render_template, redirect, request
 
 from app import app
 from great.models.Class import Class
+from great.models.User import User
 
 
 @app.route("/classroom/", methods=["GET"])
@@ -16,3 +17,16 @@ def classroom_index():
 
     # Redireciona o usuário para página de login
     return redirect("/login/")
+
+@app.route("/classroom/classes/", methods=["POST"])
+def create_class():
+    name = request.form.get("name")
+    description = request.form.get("description")
+    createdAt = request.form.get("createdAt")
+    user = User().getUserById(session["_id"])
+
+    classe = Class(name=name, description=description, user=user, createdAt=createdAt)
+
+    classe.createClass(classe)
+
+    return "OK", 200
