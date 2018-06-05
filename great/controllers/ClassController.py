@@ -24,9 +24,9 @@ def create_class():
         name = request.form.get("name")
         description = request.form.get("description")
         createdAt = request.form.get("createdAt")
-        user = User().getUserById(session["_id"])
+        creator = User().getUserById(session["_id"])
 
-        classe = Class(name=name, description=description, user=user, createdAt=createdAt)
+        classe = Class(name=name, description=description, creator=creator, createdAt=createdAt)
 
         classe.createClass(classe)
 

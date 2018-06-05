@@ -2,11 +2,11 @@ from bson.objectid import ObjectId
 from great import db
 
 class Class():
-    def __init__(self, id=0, name="", description="", user=None, createdAt=""):
+    def __init__(self, id=0, name="", description="", creator=None, createdAt=""):
         self.id = id
         self.name = name
         self.description = description
-        self.user = user
+        self.creator = creator
         self.createdAt = createdAt
 
 
@@ -16,7 +16,7 @@ class Class():
                 "name": classe.name,
                 "description": classe.description,
                 "createdAt": classe.createdAt,
-                "user": classe.user
+                "creator": classe.creator
             })
 
             return True
@@ -26,7 +26,7 @@ class Class():
     def getAllClassesByUserId(self, userId):
         try:
             classes = db.classes.find({
-                "user._id": ObjectId(userId)
+                "creator._id": ObjectId(userId)
             })
 
             return classes
