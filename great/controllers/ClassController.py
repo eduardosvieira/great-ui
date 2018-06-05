@@ -39,7 +39,7 @@ def create_class():
 def get_class(class_id):
     classe = Class().getClassById(class_id)
 
-    return classe
+    return render_template("turma.html", classe=classe)
 
 
 @app.route("/classroom/classes/<class_id>/", methods=["PUT"])

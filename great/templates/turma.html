@@ -9,7 +9,7 @@
       <a href="/dashboard/" class="breadcrumb">Dashboard</a>
       <a href="/classroom/" class="breadcrumb">Classroom</a>
       <a href="/classes/" class="breadcrumb">Turmas</a>
-      <a href="/classroom/classes/{{ class._id }}/" class="breadcrumb">{{ class.name }}</a>
+      <a href="/classroom/classes/{{ classe._id }}/" class="breadcrumb">{{ classe.name }}</a>
     </div>
   </div>
 </section>
@@ -25,9 +25,9 @@
             <div class="card-content">
               <span class="card-title">Detalhes</span>
               <ul class="collection">
-                <li class="collection-item">Criador: {{ class.creator.name }}</li>
-                <li class="collection-item">Turma: {{ class.name }}</li>
-                <li class="collection-item">Código: {{ class._id }}</li>
+                <li class="collection-item">Criador: {{ classe.user.name }}</li>
+                <li class="collection-item">Turma: {{ classe.name }}</li>
+                <li class="collection-item">Código: {{ classe._id }}</li>
               </ul>
             </div>
           </div>
@@ -58,16 +58,18 @@
                 </thead>
                 <tbody>
 
-                  {% for task in tasks %}
-                  <tr>
-                    <td>{{ task._id }}</td>
-                    <td>{{ task.name }}</td>
-                    <td>{{ task.deadline }}</td>
-                    <td>
-                      <a href="aluno.html" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
-                    </td>
-                  </tr>
-                  {% endfor %}
+                  {% if tasks %}
+                    {% for task in tasks %}
+                      <tr>
+                        <td>{{ task._id }}</td>
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.deadline }}</td>
+                        <td>
+                          <a href="aluno.html" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
 
                 </tbody>
               </table>
