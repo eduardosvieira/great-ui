@@ -25,7 +25,7 @@ def create_class():
 def get_class(class_id):
     classe = Class().getClassById(class_id)
 
-    return render_template("turma.html", classe=classe)
+    return render_template("classes/classes.html", classe=classe)
 
 
 @app.route("/classroom/classes/<class_id>/", methods=["PUT"])
