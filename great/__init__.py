@@ -59,5 +59,6 @@ def catalog():
 def gamecenter():
     return render_template('gamecenter.html')
 
+from great.controllers import DefaultController
 from great.controllers import ClassController
 from great.controllers import UserController
