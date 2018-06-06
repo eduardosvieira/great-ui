@@ -6,10 +6,10 @@
 <section class="section green darken-3 white-text">
   <div class="container">
     <div class="col s12 ">
-      <a href="{{url_for('dashboard')}}" class="breadcrumb">Dashboard</a>
-      <a href="{{url_for('classroom')}}" class="breadcrumb">Classroom</a>
-      <a href="{{url_for('disciplinas')}}" class="breadcrumb">Turmas</a>
-      <a href="#" class="breadcrumb">{{turma.name}}</a>
+      <a href="/dashboard/" class="breadcrumb">Dashboard</a>
+      <a href="/classroom/" class="breadcrumb">Classroom</a>
+      <a href="/classes/" class="breadcrumb">Turmas</a>
+      <a href="/classroom/classes/{{ classe._id }}/" class="breadcrumb">{{ classe.name }}</a>
     </div>
   </div>
 </section>
@@ -25,10 +25,9 @@
             <div class="card-content">
               <span class="card-title">Detalhes</span>
               <ul class="collection">
-                <li class="collection-item">Disciplina: FUNDAMENTOS DA COMPUTAÇÃO</li>
-                <li class="collection-item">Professor: Alana Oliveira</li>
-                <li class="collection-item">Turma: FC 2017.2</li>
-                <li class="collection-item">Código: xlklsdby265</li>
+                <li class="collection-item">Criador: {{ classe.creator.name }}</li>
+                <li class="collection-item">Turma: {{ classe.name }}</li>
+                <li class="collection-item">Código: {{ classe._id }}</li>
               </ul>
             </div>
           </div>
@@ -59,16 +58,18 @@
                 </thead>
                 <tbody>
 
-                  {% for tarefa in tarefas %}
-                  <tr>
-                    <td>{{tarefa.id}}</td>
-                    <td>{{tarefa.name}}</td>
-                    <td>{{tarefa.prazo}}</td>
-                    <td>
-                      <a href="aluno.html" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
-                    </td>
-                  </tr>
-                  {% endfor %}
+                  {% if tasks %}
+                    {% for task in tasks %}
+                      <tr>
+                        <td>{{ task._id }}</td>
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.deadline }}</td>
+                        <td>
+                          <a href="aluno.html" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
 
                 </tbody>
               </table>
