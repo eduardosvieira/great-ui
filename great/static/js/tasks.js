@@ -11,14 +11,14 @@ $(document).ready(function(event) {
     var title = $("#title").val();
     var description = $("#description").val();
     var deadline = $("#deadline").val();
-    var test = $("#test :checked").val();
+    var testId = $("#test :checked").val();
 
     $.ajax({
       url: URL + "/classroom/tasks/",
       type: "POST",
-      data: {"title": title, "description": description, "deadline": deadline, "classId": classId, "test": test},
+      data: {"title": title, "description": description, "deadline": deadline, "classId": classId, "testId": testId},
       success: function(data) {
-        window.location.replace(URL + "/classroom/classes/" + classId);
+        window.location.replace(URL + "/classroom/");
       },
       error: function(data) {
 
