@@ -2,6 +2,9 @@
 
 {% block body %}
 
+<script src="{{ url_for('static', filename='js/classes.js') }}"></script>
+<script src="{{ url_for('static', filename='js/tasks.js') }}"></script>
+
 <!-- SECTIONS:  HEADER-->
 <section class="section green darken-3 white-text">
   <div class="container">
@@ -23,6 +26,7 @@
         <div class="col s12 m8">
           <div class="card">
             <div class="card-content">
+              <input type="hidden" id="classId" value="{{ classe._id }}">
               <span class="card-title">Detalhes</span>
               <ul class="collection">
                 <li class="collection-item">Criador: {{ classe.creator.name }}</li>
@@ -143,5 +147,36 @@
         </div>
     </div>
   </section>
+
+  <div class="fixed-action-btn vertical click-to-toggle">
+       <a class="btn-floating btn-large red">
+         <i class="material-icons">add</i>
+       </a>
+       <ul>
+         <li>
+           <a href="#ModalDeleteClass" class="btn-floating red lighten-1 btn-large modal-trigger tooltipped" data-position="left" data-tooltip="Apagar Turma"><i class="material-icons">delete</i></a>
+         </li>
+
+         <li>
+           <a href="#modalEditTask" class="red lighten-1 btn-floating btn-large modal-trigger tooltipped" data-position="left" data-tooltip="Editar Turma"><i class="material-icons">edit</i></a>
+         </li>
+
+         <li>
+           <a href="#modalShareClass" class="red lighten-1 btn-floating btn-large modal-trigger tooltipped" data-position="left" data-tooltip="Convidar para Turma"><i class="material-icons">person_add</i></a>
+         </li>
+
+         <li>
+           <a href="#modalCreateNotice" class="red lighten-1 btn-floating btn-large modal-trigger tooltipped" data-position="left" data-tooltip="Enviar Aviso"><i class="material-icons">announcement</i></a>
+         </li>
+
+         <li>
+           <a id="" href="#modalCreateTask" class="red lighten-1 btn-floating btn-large modal-trigger tooltipped" data-position="left" data-tooltip="Nova Tarefa"><i class="material-icons">assignment</i></a>
+         </li>
+       </ul>
+     </div>
+
+
+     {% include 'modals/classes.html' %}
+
 
 {% endblock %}
