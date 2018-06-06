@@ -27,7 +27,8 @@ class Task():
         except:
             return False
 
-    def editTask(self, task):
+
+    def updateTask(self, task):
         try:
             db.tasks.update({"_id": ObjectId(task._id)},
             {"$set": {
@@ -39,3 +40,18 @@ class Task():
             return True
         except:
             return False
+
+
+    def getTaskById(self, taskId):
+        try:
+            task = db.tasks.find_one({
+                "_id": ObjectId(taskId)
+            })
+
+            return task
+
+        except:
+            return None
+
+
+    
