@@ -13,3 +13,153 @@
     <a class="btn red modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
   </div>
 </div>
+
+<!-- Modal para confirmar exclusão -->
+  <div id="ModalDeleteClass" class="modal">
+    <div class="modal-content">
+      <h5>Excluir turma ?</h5>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat green">Não</a>
+      <a id="btn-remove-class" class="modal-action modal-close waves-effect waves-green btn-flat red">Sim</a>
+    </div>
+  </div>
+
+  <!-- modal de edição de aviso -->
+  <div id="modalEditNotice" class="modal">
+    <div class="modal-content">
+      <h4>Editando aviso</h4>
+      <label>Título</label>
+      <input type="hidden" id="modal-edit-warning-id">
+
+      <input type="text" id="modal-edit-warning-title">
+      <label>Descrição</label>
+      <input type="text" id="modal-edit-warning-description">
+    </div>
+    <div class="modal-footer">
+      <a id="btn-edit-warning" class="modal-action modal-close waves-effect waves-green btn-flat green">Salvar</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat blue">Cancelar</a>
+    </div>
+  </div>
+
+  <!-- modal de criação de novo aviso -->
+  <div id="modalCreateNotice" class="modal">
+    <div class="modal-content">
+      <h4>Criando novo aviso</h4>
+      <label>Título</label>
+      <input type="text" id="modal-warning-title">
+      <label>Descrição</label>
+      <input type="text" id="modal-warning-description">
+    </div>
+    <div class="modal-footer">
+      <a id="btn-create-warning" class="modal-action modal-close waves-effect waves-green btn-flat green">Criar</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat blue">Cancelar</a>
+    </div>
+  </div>
+
+  <!-- modal de edição classe-->
+  <div id="modalEditClass" class="modal">
+    <div class="modal-content">
+      <h4>Editando classe</h4>
+      <label>Nome</label>
+      <input type="text" id="modal-class-name">
+      <label>Descrição</label>
+      <input type="text" id="modal-class-description">
+    </div>
+    <div class="modal-footer">
+      <a id="btn-edit-class" class="modal-action modal-close waves-effect waves-green btn-flat green">Salvar</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat blue">Cancelar</a>
+    </div>
+  </div>
+
+  <!-- Modal para compartilhar turma -->
+  <div id="modalShareClass" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <h4>Compartilhando turma</h4>
+      </div>
+
+      <div class="row">
+        <label>ID</label>
+        <p id="modal-class-id"></p>
+      </div>
+
+      <div class="row">
+        <label>E-mail</label>
+        <input type="email" id="modal-class-email">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a id="btn-share-class" class="modal-action modal-close waves-effect waves-red btn-flat green">Compartilhar</a>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat blue">Cancelar</a>
+    </div>
+  </div>
+
+  <!-- modal de edição de tarefas -->
+  <div id="modalEditTask" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <h4>Editando tarefa</h4>
+      </div>
+      <div class="row" style="{display: none}">
+        <p id="modal-edit-task-error"></p>
+      </div>
+
+      <input type="hidden" id="modal-edit-task-id">
+
+      <div class="row">
+        <label>Título</label>
+        <input type="text" id="modal-edit-task-title">
+      </div>
+
+      <div class="row">
+        <label>Descrição</label>
+        <textarea id="modal-edit-task-description" class="materialize-textarea"></textarea>
+      </div>
+
+      <div class="row">
+        <label>Prazo</label>
+        <input id="modal-edit-task-deadline" type="date">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a id="btn-edit-task" class="waves-effect waves-red btn-flat green">Salvar</a>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat blue">Cancelar</a>
+    </div>
+  </div>
+
+
+  <!-- modal de crição de tarefas -->
+  <div id="modalCreateTask" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <h4>Criando nova tarefa</h4>
+      </div>
+      <div class="row" style="{display: none}">
+        <p id="modal-new-task-error"></p>
+      </div>
+      <div class="row">
+        <label>Título</label>
+        <input type="text" id="title">
+      </div>
+
+      <div class="row">
+        <label>Descrição</label>
+        <textarea id="description" class="materialize-textarea"></textarea>
+      </div>
+
+      <div class="row">
+        <label>Questionário</label>
+        <select id="test"></select>
+      </div>
+
+      <div class="row">
+        <label>Prazo</label>
+        <input id="deadline" type="date">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a id="btn-create-task" class="waves-effect waves-red btn-flat green">Criar</a>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat blue">Cancelar</a>
+    </div>
+  </div>
