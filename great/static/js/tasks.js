@@ -16,7 +16,7 @@ $(document).ready(function(event) {
     $.ajax({
       url: URL + "/classroom/tasks/",
       type: "POST",
-      data: {"title": title, "description": description, "deadline": deadline, "classId": classId, "testId": testId},
+      data: {"title": title, "description": description, "createdAt": Date(), "deadline": deadline, "classId": classId, "testId": testId},
       success: function(data) {
         window.location.replace(URL + "/classroom/");
       },
