@@ -54,4 +54,13 @@ class Task():
             return None
 
 
-    
+    def getAllTasksByClassId(self, classId):
+        try:
+            tasks = db.tasks.find({
+                "class._id": ObjectId(classId)
+            })
+
+            return tasks
+
+        except:
+            return None
