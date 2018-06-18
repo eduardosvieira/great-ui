@@ -66,11 +66,11 @@
                   {% if tasks %}
                     {% for task in tasks %}
                       <tr>
-                        <td>{{ task._id }}</td>
-                        <td>{{ task.name }}</td>
+                        <td class="taskId">{{ task._id }}</td>
+                        <td>{{ task.title }}</td>
                         <td>{{ task.deadline }}</td>
                         <td>
-                          <a href="aluno.html" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
+                          <a class="callModalEditTask" href="#modalEditTask" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
                         </td>
                       </tr>
                     {% endfor %}
