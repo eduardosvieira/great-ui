@@ -46,4 +46,20 @@ $(document).ready(function(event){
 
     $("#modal-edit-notice-id").attr("value", noticeId);
   });
+
+  $(".btnDeleteNotice").on("click", function(event) {
+    var classId = $("#classId").val();
+    var noticeId = $(this).parent().siblings(".noticeId").text();
+
+    $.ajax({
+      url: URL + "/classroom/notices/" + noticeId + "/",
+      type: "DELETE",
+      success: function(data) {
+        window.location.replace(URL + "/classroom/classes/" + classId + "/");
+      },
+      error: function(data) {
+
+      }
+    });
+  });
 });

@@ -35,3 +35,9 @@ def update_notice(notice_id):
 
     else:
         return "Error", 400
+
+@app.route("/classroom/notices/<notice_id>/", methods=["DELETE"])
+def delete_notice(notice_id):
+    Notice().deleteNoticeById(notice_id)
+
+    return "OK", 200
