@@ -24,4 +24,26 @@ $(document).ready(function(event){
       }
     });
   });
+
+  $("#btnEditNotice").on("click", function(event) {
+    var classId = $("#classId").val();
+    var noticeId = $("#modal-edit-notice-id").val();
+    var title = $("#modal-edit-notice-title").val();
+    var description = $("#modal-edit-notice-description").val();
+
+    $.ajax({
+      url: URL + "/classroom/notices/" + noticeId + "/",
+      type: "PUT",
+      data: {"title": title, "description": description},
+      success: function(data) {
+        window.location.replace(URL + "/classroom/classes/" + classId + "/");
+      }
+    });
+  });
+
+  $(".callModalEditNotice").on("click", function(event) {
+    var noticeId = $(this).parent().siblings(".noticeId").text();
+
+    $("#modal-edit-notice-id").attr("value", noticeId);
+  });
 });

@@ -21,3 +21,17 @@ def create_notice():
 
     else:
         return "Error", 400
+
+
+@app.route("/classroom/notices/<notice_id>/", methods=["PUT"])
+def update_notice(notice_id):
+    title = request.form.get("title")
+    description = request.form.get("description")
+
+    notice = Notice(id=notice_id, title=title, description=description)
+
+    if notice.updateNotice(notice):
+        return "OK", 200
+
+    else:
+        return "Error", 400
