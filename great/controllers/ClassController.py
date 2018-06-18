@@ -24,11 +24,14 @@ def create_class():
 
 @app.route("/classroom/classes/<class_id>/", methods=["GET"])
 def get_class(class_id):
-    classe = Class().getClassById(class_id)
-    tasks = Task().getAllTasksByClassId(class_id)
+    if "_id" in session:
+        classe = Class().getClassById(class_id)
+        tasks = Task().getAllTasksByClassId(class_id)
 
-    return render_template("classes/classes.html", classe=classe, tasks=tasks)
+        if str(classe["creator"]["_id"]) == session["_id"]:
+            return render_template("classes/classes.html", classe=classe, tasks=tasks)
 
+    return "error", 400
 
 @app.route("/classroom/classes/<class_id>/", methods=["PUT"])
 def update_class(class_id):
