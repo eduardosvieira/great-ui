@@ -40,6 +40,38 @@
         <div class="col s12 m4">
           <div class="card">
             <div class="card-content">
+              <span class="card-title">Avisos</span>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Aviso</th>
+                    <th>Descrição</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% if notices %}
+                    {% for notice in notices %}
+                      <tr>
+                        <td class="noticeId">{{ notice._id }}</td>
+                        <td>{{ notice.title }}</td>
+                        <td>{{ notice.description }}</td>
+                        <td>
+                          <a class="callModalEditNotice" href="#modalEditNotice" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
+                        </td>
+                        <td>
+                          <a href="" class="btnDeleteNotice"><i class="material-icons">delete</i></a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+
+                </tbody>
+              </table>
+
 
             </div>
           </div>
