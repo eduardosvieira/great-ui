@@ -28,18 +28,15 @@ class Task():
             return False
 
 
-    def updateTask(self, task):
-        try:
-            db.tasks.update({"_id": ObjectId(task._id)},
-            {"$set": {
-                "title": task.title,
-                "description": task.description,
-                "deadline": task.deadline,
-            }})
+    def updateTask(self, task=None):
+        db.tasks.update({"_id": ObjectId(task.id)},
+        {"$set": {
+            "title": task.title,
+            "description": task.description,
+            "deadline": task.deadline
+        }})
 
-            return True
-        except:
-            return False
+        return True
 
 
     def getTaskById(self, taskId):
@@ -64,3 +61,11 @@ class Task():
 
         except:
             return None
+
+    def deleteTask(self, taskId=0):
+        try:
+            db.tasks.remove({"_id": ObjectId(taskId)})
+
+            return True
+        except:
+            return False

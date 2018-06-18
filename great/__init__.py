@@ -14,3 +14,4 @@ from great.controllers import DefaultController
 from great.controllers import ClassController
 from great.controllers import UserController
 from great.controllers import TaskController
+from great.controllers import NoticeController

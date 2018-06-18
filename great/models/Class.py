@@ -51,7 +51,7 @@ class Class():
                 "_id": ObjectId(classe.id)
             }, {"$set": {
                 "name": classe.name,
-                "description": classe.description,
+                "description": classe.description
             }})
 
             return True

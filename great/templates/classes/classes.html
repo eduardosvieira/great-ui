@@ -2,8 +2,10 @@
 
 {% block body %}
 
+<script src="{{ url_for('static', filename='js/classroom.js') }}"></script>
 <script src="{{ url_for('static', filename='js/classes.js') }}"></script>
 <script src="{{ url_for('static', filename='js/tasks.js') }}"></script>
+<script src="{{ url_for('static', filename='js/notices.js') }}"></script>
 
 <!-- SECTIONS:  HEADER-->
 <section class="section green darken-3 white-text">
@@ -23,7 +25,7 @@
   <section class="section section-visitors grey lighten-4">
     <div class="container">
       <div class="row">
-        <div class="col s12 m8">
+        <div class="col s12 m12 l12">
           <div class="card">
             <div class="card-content">
               <input type="hidden" id="classId" value="{{ classe._id }}">
@@ -36,9 +38,41 @@
             </div>
           </div>
         </div>
-        <div class="col s12 m4">
+        <div class="col s12 m12 l12">
           <div class="card">
             <div class="card-content">
+              <span class="card-title">Avisos</span>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Aviso</th>
+                    <th>Descrição</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% if notices %}
+                    {% for notice in notices %}
+                      <tr>
+                        <td class="noticeId">{{ notice._id }}</td>
+                        <td>{{ notice.title }}</td>
+                        <td>{{ notice.description }}</td>
+                        <td>
+                          <a class="callModalEditNotice" href="#modalEditNotice" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
+                        </td>
+                        <td>
+                          <a href="" class="btnDeleteNotice"><i class="material-icons">delete</i></a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+
+                </tbody>
+              </table>
+
 
             </div>
           </div>
@@ -58,6 +92,7 @@
                     <th>TAREFA</th>
                     <th>PRAZO</th>
                     <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -65,11 +100,14 @@
                   {% if tasks %}
                     {% for task in tasks %}
                       <tr>
-                        <td>{{ task._id }}</td>
-                        <td>{{ task.name }}</td>
+                        <td class="taskId">{{ task._id }}</td>
+                        <td>{{ task.title }}</td>
                         <td>{{ task.deadline }}</td>
                         <td>
-                          <a href="aluno.html" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
+                          <a class="callModalEditTask" href="#modalEditTask" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
+                        </td>
+                        <td>
+                          <a href="#" class="btnDeleteTask"><i class="material-icons">delete</i></a>
                         </td>
                       </tr>
                     {% endfor %}
@@ -158,7 +196,7 @@
          </li>
 
          <li>
-           <a href="#modalEditTask" class="red lighten-1 btn-floating btn-large modal-trigger tooltipped" data-position="left" data-tooltip="Editar Turma"><i class="material-icons">edit</i></a>
+           <a href="#modalEditClass" class="red lighten-1 btn-floating btn-large modal-trigger tooltipped" data-position="left" data-tooltip="Editar Turma"><i class="material-icons">edit</i></a>
          </li>
 
          <li>
@@ -177,6 +215,8 @@
 
 
      {% include 'modals/classes.html' %}
+     {% include 'modals/notices.html' %}
+     {% include 'modals/tasks.html' %}
 
 
 {% endblock %}

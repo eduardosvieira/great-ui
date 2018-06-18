@@ -24,3 +24,25 @@ def create_task():
 
     else:
         return "Error", 400
+
+
+@app.route("/classroom/tasks/<task_id>/", methods=["PUT"])
+def update_task(task_id):
+    title = request.form.get("title")
+    description = request.form.get("description")
+    deadline = request.form.get("deadline")
+
+    task = Task(id=task_id, title=title, description=description, deadline=deadline)
+
+    if task.updateTask(task):
+        return "OK", 200
+
+    else:
+        return "Error", 400
+
+@app.route("/classroom/tasks/<task_id>/", methods=["DELETE"])
+def delete_task(task_id):
+    if Task().deleteTask(task_id):
+        return "OK", 200
+    else:
+        return "Error", 400

@@ -2,11 +2,11 @@ from bson.objectid import ObjectId
 from great import db
 
 class Notice():
-    def __init__(self, id=0, title="", description="", class=None, createdAt=""):
+    def __init__(self, id=0, title="", description="", classe=None, createdAt=""):
         self.id = id
         self.title = title
         self.description = description
-        self.class = class
+        self.classe = classe
         self.createdAt = createdAt
 
 
@@ -15,14 +15,13 @@ class Notice():
             db.notices.insert({
                 "title": notice.title,
                 "description": notice.description,
-                "class": notice.class,
-                "createdAt": invite.createdAt
+                "class": notice.classe,
+                "createdAt": notice.createdAt
             })
 
             return True
         except:
             return False
-
 
     def getAllNoticesByClassId(self, classId):
         try:
