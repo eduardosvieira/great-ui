@@ -33,15 +33,21 @@ def update_class(class_id):
     name = request.form.get("name")
     description = request.form.get("description")
 
-    classe = Class(name=name, description=description)
+    print(name)
+    print(description)
 
-    classe.updateClass(classe)
+    classe = Class(id=class_id, name=name, description=description)
 
-    return "OK", 200
-
+    if classe.updateClass(classe):
+        return "OK", 200
+    else:
+        return "Error", 400
 
 @app.route("/classroom/classes/<class_id>/", methods=["DELETE"])
 def delete_class(class_id):
-    Class().deleteClassById(class_id)
+    try:
+        Class().deleteClassById(class_id)
 
-    return "OK", 200
+        return "OK", 200
+    except:
+        return "Error", 400
