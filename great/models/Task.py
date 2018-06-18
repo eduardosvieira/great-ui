@@ -61,3 +61,11 @@ class Task():
 
         except:
             return None
+
+    def deleteTask(self, taskId=0):
+        try:
+            db.tasks.remove({"_id": ObjectId(taskId)})
+
+            return True
+        except:
+            return False

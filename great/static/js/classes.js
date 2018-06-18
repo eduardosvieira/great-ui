@@ -7,8 +7,6 @@ var URL = PROTOCOL + "//" + HOSTNAME + ":" + PORT;
 $(document).ready(function(event){
   $(".modal").modal();
 
-  console.log("ok");
-
   $("#btnCreateClass").on("click", function(event) {
     var name = $("#name").val();
     var description = $("#description").val();

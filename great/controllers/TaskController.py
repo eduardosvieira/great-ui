@@ -39,3 +39,10 @@ def update_task(task_id):
 
     else:
         return "Error", 400
+
+@app.route("/classroom/tasks/<task_id>/", methods=["DELETE"])
+def delete_task(task_id):
+    if Task().deleteTask(task_id):
+        return "OK", 200
+    else:
+        return "Error", 400
