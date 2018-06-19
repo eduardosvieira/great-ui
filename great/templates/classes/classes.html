@@ -81,6 +81,7 @@
 
       <!-- Section: Lista de Tarefas da Turma -->
       <div class="row">
+
         <div class="col s12">
           <div class="card">
             <div class="card-content">
@@ -124,6 +125,43 @@
 
     <!-- Section: Lista de Participantes -->
       <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Convites</span>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Estudante</th>
+                    <th>E-mail</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% if invites %}
+                    {% for invite in invites %}
+                      <tr>
+                        <td class="inviteId">{{ invite._id }}</td>
+                        <td>{{ invite.user.name }}</td>
+                        <td>{{ invite.user.email }}</td>
+                        <td>
+                          <a herf="" class="btnAcceptInvite"><i class="material-icons">done</i></a>
+                        </td>
+                        <td>
+                          <a href="" class="btnDeleteInvite"><i class="material-icons">delete</i></a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+
+                </tbody>
+              </table>
+
+            </div>
+          </div>
         <div class="col s12">
           <div class="card">
             <div class="card-content">
@@ -200,7 +238,7 @@
          </li>
 
          <li>
-           <a href="#modalShareClass" class="red lighten-1 btn-floating btn-large modal-trigger tooltipped" data-position="left" data-tooltip="Convidar para Turma"><i class="material-icons">person_add</i></a>
+           <a id="btnCallModalShareClass" href="#modalShareClass" class="red lighten-1 btn-floating btn-large modal-trigger tooltipped" data-position="left" data-tooltip="Convidar para Turma"><i class="material-icons">person_add</i></a>
          </li>
 
          <li>
