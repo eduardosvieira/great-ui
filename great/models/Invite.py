@@ -2,10 +2,10 @@ from bson.objectid import ObjectId
 from great import db
 
 class Invite():
-    def __init__(self, id=0, user=None, class=None, createdAt="", status=""):
+    def __init__(self, id=0, user=None, classe=None, createdAt="", status=""):
         self.id = id
         self.user = user
-        self.class = class
+        self.classe = classe
         self.createdAt = createdAt
         self.status = status
 
@@ -13,7 +13,7 @@ class Invite():
         try:
             db.invites.insert({
                 "user": invite.user,
-                "class": invite.class,
+                "class": invite.classe,
                 "createdAt": invite.createdAt,
                 "status": invite.status
             })

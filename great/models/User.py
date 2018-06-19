@@ -49,6 +49,16 @@ class User():
         except:
             return None
 
+    def getUserByEmail(self, email=""):
+        try:
+            user = db.users.find_one({
+                "email": email
+            })
+
+            return user
+
+        except:
+            return None
 
     def updateUser(self, user=None):
         try:

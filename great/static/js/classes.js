@@ -31,7 +31,7 @@ $(document).ready(function(event){
     $.ajax({
       url: URL + "/classroom/classes/" + classId + "/invites/",
       type: "POST",
-      data: {"email": email},
+      data: {"email": email, "createdAt": Date()},
       success: function(data) {
         window.location.replace(URL + "/classroom/classes/" + classId + "/")
       },
