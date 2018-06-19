@@ -24,6 +24,30 @@ $(document).ready(function(event){
     });
   });
 
+  $("#btnShareClass").on("click", function(event){
+    var classId = $("#classId").val();
+    var email = $("#modal-share-class-email").val();
+
+    $.ajax({
+      url: URL + "/classroom/classes/" + classId + "/invites/",
+      type: "POST",
+      data: {"email": email},
+      success: function(data) {
+        window.location.replace(URL + "/classroom/classes/" + classId + "/")
+      },
+      error: function(data) {
+
+      }
+    });
+  });
+
+  $("#btnCallModalShareClass").on("click", function(event){
+    var classId = $("#classId").val();
+
+    $("#modal-share-class-id").text(classId);
+
+  });
+
   $("#btnUpdateClass").on("click", function(event) {
     var classId = $("#classId").val();
     var name = $("#modal-edit-class-name").val();
