@@ -4,6 +4,7 @@ from great import app
 from great import db
 
 from great.models.User import User
+from great.models.Class import Class
 from great.models.Invite import Invite
 
 
@@ -13,7 +14,11 @@ def send_invite(class_id):
     createdAt = request.form.get("createdAt")
 
     user = User().getUserByEmail(email)
+    classe = Class().getClassById(class_id)
 
-    invite = Invite(email=email)
+    invite = Invite(user=user, classe=classe, createdAt=createdAt, status="sent")
 
-    return "OK", 200
+    if invite.createInvite(invite):
+        return "OK", 200
+    else:
+        return "Error", 400

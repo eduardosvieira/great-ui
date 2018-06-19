@@ -5,6 +5,7 @@ from great.models.Class import Class
 from great.models.User import User
 from great.models.Task import Task
 from great.models.Notice import Notice
+from great.models.Invite import Invite
 
 @app.route("/classroom/classes/", methods=["POST"])
 def create_class():
@@ -29,9 +30,10 @@ def get_class(class_id):
         classe = Class().getClassById(class_id)
         tasks = Task().getAllTasksByClassId(class_id)
         notices = Notice().getAllNoticesByClassId(class_id)
+        invites = Invite().getAllInvitesByClassId(class_id)
 
         if str(classe["creator"]["_id"]) == session["_id"]:
-            return render_template("classes/classes.html", classe=classe, tasks=tasks, notices=notices)
+            return render_template("classes/classes.html", classe=classe, tasks=tasks, notices=notices, invites=invites)
 
     return "error", 400
 
