@@ -22,3 +22,11 @@ def send_invite(class_id):
         return "OK", 200
     else:
         return "Error", 400
+
+
+@app.route("/classroom/invites/<invite_id>/", methods=["DELETE"])
+def delete_invite(invite_id):
+    if Invite().deleteInviteById(invite_id):
+        return "OK", 200
+    else:
+        return "Error", 400
