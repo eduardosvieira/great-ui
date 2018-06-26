@@ -16,7 +16,10 @@ def send_invite(class_id):
     user = User().getUserByEmail(email)
     classe = Class().getClassById(class_id)
 
-    invite = Invite(user=user, classe=classe, createdAt=createdAt, status="sent")
+    if user:
+        invite = Invite(user=user, classe=classe, createdAt=createdAt, status="sent")
+    else:
+        invite = Invite(user={"email": email}, classe=classe, createdAt=createdAt, status="sent")
 
     invite_id = invite.createInvite(invite)
     title = "Convite Classroom"
