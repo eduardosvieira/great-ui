@@ -11,16 +11,16 @@ class Invite():
 
     def createInvite(self, invite=None):
         try:
-            db.invites.insert({
+            id = db.invites.insert_one({
                 "user": invite.user,
                 "class": invite.classe,
                 "createdAt": invite.createdAt,
                 "status": invite.status
-            })
+            }).inserted_id
 
-            return True
+            return id
         except:
-            return False
+            return None
 
 
     def getAllInvitesByClassId(self, classId):

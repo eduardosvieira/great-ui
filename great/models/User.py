@@ -10,6 +10,9 @@ class User():
         self.email = email
         self.password = password
 
+    def __repr__(self):
+        return "%s" % (self.__class__)
+
 
     def signUpUser(self, user=None):
         try:

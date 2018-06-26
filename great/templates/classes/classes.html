@@ -128,14 +128,12 @@
         <div class="col s12">
           <div class="card">
             <div class="card-content">
-              <span class="card-title">Convites</span>
+              <span class="card-title">Convites Enviados</span>
               <table class="striped">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Estudante</th>
                     <th>E-mail</th>
-                    <th></th>
                     <th></th>
                   </tr>
                 </thead>
@@ -145,11 +143,7 @@
                     {% for invite in invites %}
                       <tr>
                         <td class="inviteId">{{ invite._id }}</td>
-                        <td>{{ invite.user.name }}</td>
                         <td>{{ invite.user.email }}</td>
-                        <td>
-                          <a herf="" class="btnAcceptInvite"><i class="material-icons">done</i></a>
-                        </td>
                         <td>
                           <a href="" class="btnDeleteInvite"><i class="material-icons">delete</i></a>
                         </td>

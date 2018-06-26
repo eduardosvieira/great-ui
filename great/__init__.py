@@ -2,8 +2,21 @@ from flask import Flask, render_template, flash, redirect, url_for, session,logg
 from great.data import *
 from great.forms import *
 from pymongo import MongoClient
+from flask_mail import Mail
 
 app = Flask (__name__)
+
+app.config.update(
+        DEBUG=True,
+        #EMAIL SETTINGS
+        MAIL_SERVER='smtp.gmail.com',
+        MAIL_PORT=465,
+        MAIL_USE_SSL=True,
+        MAIL_USERNAME = 'lawsclassroom@gmail.com',
+        MAIL_PASSWORD = '@lawsclassroom'
+        )
+
+mail=Mail(app)
 
 app.config["SECRET_KEY"] = "sjakjs45454s@#4s8as9s997"
 
