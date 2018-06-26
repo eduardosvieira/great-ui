@@ -10,13 +10,20 @@ class Class():
         self.createdAt = createdAt
 
 
+    def addParticipant(self, user=None, classe=None):
+        db.classes.update({"_id": ObjectId(classe._id)},
+            {"$addToSet": {"participants": user["_id"]}})
+
+        return True
+
     def createClass(self, classe=None):
         try:
             db.classes.insert({
                 "name": classe.name,
                 "description": classe.description,
                 "createdAt": classe.createdAt,
-                "creator": classe.creator
+                "creator": classe.creator,
+                "participants": []
             })
 
             return True
