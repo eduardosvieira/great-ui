@@ -36,15 +36,18 @@
                 <td>{{ class.description }}</td>
              </td>
                  <td class="hide-on-small-only">
-                    <a href="/classroom/classes/{{ class._id }}" class="btn btn-icon green">
+                    <a href="/classroom/classes/{{ class._id }}" data-position="top" data-delay="250" data-tooltip="Editar turma" class="btn tooltipped btn-icon green">
                         <span class="icon"><i class="fa fa-edit"></i></span>
                     </a>
-                    <a href="/classroom/classes/{{ class._id }}" class="btn btn-icon green">
-                        <span class="icon"><i class="fa fa-search"></i></span>
+
+
+                    <a href="{{ url_for('get_class', class_id=class._id)}}" data-position="top" data-delay="250" data-tooltip="Entrar na turma" class="btn tooltipped btn-icon green">
+                        <span class="icon"><i class="material-icons">touch_app</i></span>
                     </a>
-                    <a href="/classroom/classes/{{ class._id }}" class="btn btn-icon green">
+                    <a href="{{ url_for('get_class', class_id=class._id)}}" data-position="top" data-delay="250" data-tooltip="Tópicos"  class="btn tooltipped btn-icon green">
                         <span class="icon"><i class="fa fa-sitemap"></i></span>
                     </a>
+
 
                 </td>
 
@@ -57,7 +60,7 @@
       </div>
       <div class="card-action">
         <ul class="pagination">
-          <li class="disabled">
+          <!-- <li class="disabled">
             <a href="#!" class="teal-text">
               <i class="material-icons">chevron_left</i>
             </a>
@@ -76,7 +79,7 @@
             <a href="#!" class="teal-text">
               <i class="material-icons">chevron_right</i>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

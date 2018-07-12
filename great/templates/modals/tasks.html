@@ -1,34 +1,37 @@
 
 <!-- modal de edição de tarefas -->
 <div id="modalEditTask" class="modal">
-  <div class="modal-content">
-    <div class="row">
-      <h4>Editando tarefa</h4>
+  <section class="section green center darken-3 white-text">
+    <div class="container">
+      <h5 class="flow-text">Editar tarefa</h5>
     </div>
+  </section>
+  <div class="modal-content">
     <div class="row" style="{display: none}">
       <p id="modal-edit-task-error"></p>
     </div>
 
     <input type="hidden" id="modal-edit-task-id">
 
-    <div class="row">
-      <label>Título</label>
+    <div class="input-field">
       <input type="text" id="modal-edit-task-title">
+      <label for="modal-edit-task-title">Título</label>
     </div>
 
-    <div class="row">
+    <div class="input-field">
       <label>Descrição</label>
       <textarea id="modal-edit-task-description" class="materialize-textarea"></textarea>
     </div>
 
-    <div class="row">
+    <div class="input-field">
       <label>Prazo</label>
       <input id="modal-edit-task-deadline" type="date">
     </div>
   </div>
   <div class="modal-footer">
-    <a id="btnEditTask" class="waves-effect waves-red btn-flat green">Salvar</a>
-    <a class="modal-action modal-close waves-effect waves-red btn-flat blue">Cancelar</a>
+    <a id="btnEditTask" class="modal-action modal-close btn green darken-2"><i class="fa fa-check"></i> Editar</a>
+    <a class="modal-action modal-close btn grey"><i class="fa fa-ban"></i> Cancelar</a>
+
   </div>
 </div>
 
@@ -46,35 +49,37 @@
 
 <!-- modal de crição de tarefas -->
 <div id="modalCreateTask" class="modal">
-  <div class="modal-content">
-    <div class="row">
-      <h4>Criando nova tarefa</h4>
+  <section class="section green center darken-3 white-text">
+    <div class="container">
+      <h5 class="flow-text">Adicinar nova tarefa</h5>
     </div>
+  </section>
+  <div class="modal-content">
+
     <div class="row" style="{display: none}">
       <p id="modal-new-task-error"></p>
     </div>
-    <div class="row">
+    <div class="input-field">
       <label>Título</label>
       <input type="text" id="title">
     </div>
 
-    <div class="row">
+    <div class="input-field">
       <label>Descrição</label>
       <textarea id="description" class="materialize-textarea"></textarea>
     </div>
-
-    <div class="row">
+    <div class="input-field">
       <label>Questionário</label>
       <select id="test"></select>
     </div>
-
-    <div class="row">
+    <div class="input-field">
       <label>Prazo</label>
       <input id="deadline" type="date">
     </div>
   </div>
   <div class="modal-footer">
-    <a id="btnCreateTask" class="waves-effect waves-red btn-flat modal-close green">Criar</a>
-    <a class="modal-action modal-close waves-effect waves-red btn-flat blue">Cancelar</a>
+    <a id="btnCreateTask" class="modal-action modal-close btn green darken-2"><i class="fa fa-check"></i> Adicionar</a>
+    <a class="modal-action modal-close btn grey"><i class="fa fa-ban"></i> Cancelar</a>
+
   </div>
 </div>

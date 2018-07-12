@@ -15,14 +15,14 @@
       </a>
     </div>
   </li>
-  <li><a href="index.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
-  <li><a href="turmas.html">Turmas</a></li>
-  <li><a href="avisos.html">Avisos</a></li>
-  <li><a href="convites.html">Convites</a></li>
-  <li><a href="participantes.html">Participantes</a></li>
+  <li><a href="{{url_for('dashboard')}}"><i class="material-icons">dashboard</i>Dashboard</a></li>
+  <li><a href="{{url_for('classroom_index')}}">Turmas</a></li>
+  <li><a href="{{url_for('classroom_index')}}">Avisos</a></li>
+  <li><a href="{{url_for('classroom_index')}}">Convites</a></li>
+  <li><a href="{{url_for('classroom_index')}}">Participantes</a></li>
   <li><div class="divider"></div></li>
   <li>
     <a class="subheader">Account Controls</a>
   </li>
-  <li><a href="login.html" class="waves-effect">Logout</a></li>
+  <li><a href="{{url_for('logout')}}" class="waves-effect">Logout</a></li>
 </ul>

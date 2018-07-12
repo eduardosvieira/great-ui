@@ -1,16 +1,24 @@
 <!-- modal de nova turma -->
 <div id="modalCreateClass" class="modal">
-  <div class="modal-content">
-    <h4>Criando nova turma</h4>
-    <label>Nome</label>
-    <input type="text" id="name">
-
-    <label>Descrição</label>
-    <textarea id="description" class="materialize-textarea"></textarea>
+  <section class="section green center darken-3 white-text">
+    <div class="container">
+      <h5 class="flow-text">Adicionar turma</h5>
+    </div>
+  </section>
+   <div class="modal-content">
+     <div class="input-field">
+      <label for="name">Nome</label>
+      <input type="text" id="name">
+    </div>
+    <div class="input-field">
+      <label for="description">Descrição</label>
+      <textarea type="description" id="description" class="materialize-textarea"></textarea>
+    </div>
   </div>
   <div class="modal-footer">
-    <a id="btnCreateClass" class="btn green modal-action modal-close waves-effect waves-green btn-flat">Criar</a>
-    <a class="btn red modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    <a id="btnCreateClass" class="modal-action modal-close btn green darken-2"><i class="fa fa-check"></i> Adicionar</a>
+    <a class="modal-action modal-close btn grey"><i class="fa fa-ban"></i> Cancelar</a>
+
   </div>
 </div>
 
@@ -28,16 +36,26 @@
 
   <!-- modal de edição classe-->
   <div id="modalEditClass" class="modal">
-    <div class="modal-content">
-      <h4>Editando classe</h4>
-      <label>Nome</label>
-      <input type="text" id="modal-edit-class-name">
-      <label>Descrição</label>
-      <input type="text" id="modal-edit-class-description">
+
+      <section class="section green center darken-3 white-text">
+        <div class="container">
+          <h5 class="flow-text">Editar turma</h5>
+        </div>
+      </section>
+      <div class="modal-content">
+        <div class="input-field">
+            <label>Nome</label>
+            <input type="text" id="modal-edit-class-name">
+        </div>
+        <div class="input-field">
+          <label>Descrição</label>
+          <input type="text" id="modal-edit-class-description">
+        </div>
     </div>
     <div class="modal-footer">
-      <a id="btnUpdateClass" class="modal-action modal-close waves-effect waves-green btn-flat green">Salvar</a>
-      <a class="modal-action modal-close waves-effect waves-green btn-flat blue">Cancelar</a>
+      <a id="btnUpdateClass" class="modal-action modal-close btn green darken-2"><i class="fa fa-check"></i> Editar</a>
+      <a class="modal-action modal-close btn grey"><i class="fa fa-ban"></i> Cancelar</a>
+
     </div>
   </div>
 
