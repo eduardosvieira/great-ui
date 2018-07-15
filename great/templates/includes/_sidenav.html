@@ -8,10 +8,10 @@
         <img src="{{ url_for('static', filename="img/users/alana.jpg")}}" class="circle" alt="">
       </a>
       <a href="" class="">
-        <span class="name white-text">Alana Oliveira</span>
+        <span class="name white-text">{{session.name}}</span>
       </a>
       <a href="" class="">
-        <span class="email white-text">alana@ecp.ufma.br</span>
+        <span class="email white-text">{{session.email}}</span>
       </a>
     </div>
   </li>
