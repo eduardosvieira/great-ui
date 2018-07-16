@@ -4,15 +4,18 @@
       <div class="background">
         <img src="{{ url_for('static', filename="img/chalkboard.jpg")}}" class="responsive-img" alt="">
       </div>
+
+      {% if session._id %}
       <a href="perfil.html" class="">
-        <img src="{{ url_for('static', filename="img/users/alana.jpg")}}" class="circle" alt="">
+        <img src="{{ session.email| gravatar }}" class="circle" alt="User Photo">
       </a>
-      <a href="" class="">
-        <span class="name white-text">{{session.name}}</span>
-      </a>
-      <a href="" class="">
-        <span class="email white-text">{{session.email}}</span>
-      </a>
+          <a href="" class="">
+            <span class="name white-text">{{session.name}}</span>
+          </a>
+          <a href="" class="">
+            <span class="email white-text">{{session.email}}</span>
+          </a>
+      {% endif %}
     </div>
   </li>
   <li><a href="{{url_for('dashboard')}}"><i class="material-icons">dashboard</i>Dashboard</a></li>
@@ -24,5 +27,12 @@
   <li>
     <a class="subheader">Account Controls</a>
   </li>
-  <li><a href="{{url_for('logout')}}" class="waves-effect">Logout</a></li>
+    {% if session['_id'] %}
+      <li><a href="{{url_for('logout')}}" class="waves-effect">Logout</a></li>
+    {% else %}
+      <li><a href="{{url_for('register')}}" class="waves-effect">Registrar</a></li>
+      <li><a href="{{url_for('login')}}" class="waves-effect">Login</a></li>
+    {% endif %}
+
+
 </ul>

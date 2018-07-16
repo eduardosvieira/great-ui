@@ -3,6 +3,8 @@ from great.data import *
 from great.forms import *
 from pymongo import MongoClient
 from flask_mail import Mail
+from flask_gravatar import Gravatar
+
 
 app = Flask (__name__)
 
@@ -18,6 +20,15 @@ app.config.update(
 
 mail=Mail(app)
 
+gravatar = Gravatar(app,
+                    size=100,
+                    rating='g',
+                    default='retro',
+                    force_default=False,
+                    use_ssl=False,
+                    base_url=None)
+
+                    
 app.config["SECRET_KEY"] = "sjakjs45454s@#4s8as9s997"
 
 client = MongoClient('mongodb://localhost:27017/')
