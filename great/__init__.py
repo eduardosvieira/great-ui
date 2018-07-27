@@ -1,6 +1,5 @@
 from flask import Flask, render_template, flash, redirect, url_for, session,logging
-from great.data import *
-from great.forms import *
+
 from pymongo import MongoClient
 from flask_mail import Mail
 from flask_gravatar import Gravatar
