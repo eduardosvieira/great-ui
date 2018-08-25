@@ -1,3 +1,4 @@
+
 {% extends 'layout_login.html' %}
 
 {% block body %}
@@ -15,7 +16,10 @@
             </a>
             <ul class="right hide-on-med-and-down">
               <li>
-                <a class="btn teal darken-3" href="{{url_for('redirect_register')}}">REGISTRAR</a>
+                <a href="#home">REGISTRAR</a>
+              </li>
+              <li>
+                <a href="#" class="btn teal darken-3">REGISTRAR</a>
               </li>
             </ul>
           </div>
@@ -73,11 +77,6 @@
                 </div>
               </div>
             </form>
-            <hr/>
-            <div class="col s12 center">
-              <label for="redirect_register"><a href="{{url_for('redirect_register')}}">Esqueceu a senha?</a></label>
-            </div>
-
           </div>
 
         </div>

@@ -21,7 +21,8 @@ def login():
     user = User().getUserByEmail(email)
 
     if user:
-        if check_password_hash(user["password"], password):
+        #if check_password_hash(user["password"], password):
+        if user["password"] == password:
             session["email"] = user["email"]
             session["name"] = user["name"]
             session["_id"] = str(user["_id"])
@@ -29,7 +30,6 @@ def login():
 
     error = "E-mail ou senha estão incorretos!"
     return render_template("user/login.html", error=error)
-
 
 @app.route('/logout/')
 def logout():
