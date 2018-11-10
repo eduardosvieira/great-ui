@@ -20,6 +20,9 @@ def login():
     password = generate_password_hash(request.form.get("password"))
     user = User().getUserByEmail(email)
 
+    print(password)
+    print(user["password"])
+
     if user:
         if check_password_hash(user["password"], password):
             session["email"] = user["email"]
