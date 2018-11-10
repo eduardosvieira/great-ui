@@ -1,7 +1,7 @@
 from flask import session, render_template, redirect, request, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from great import app
+from app import app
 from great.models.User import User
 
 @app.route("/login/", methods=["GET"])

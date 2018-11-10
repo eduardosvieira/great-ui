@@ -1,6 +1,6 @@
 from flask import session, render_template, redirect, request
 
-from great import app
+from app import app
 from great.models.Class import Class
 from great.models.User import User
 from great.models.Task import Task
