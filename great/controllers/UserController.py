@@ -17,12 +17,11 @@ def login():
     email = request.form.get("email")
     password = request.form.get("password")
 
-    #password = generate_password_hash(request.form.get("password"))
+    password = generate_password_hash(request.form.get("password"))
     user = User().getUserByEmail(email)
 
     if user:
-        #if check_password_hash(user["password"], password):
-        if user["password"] == password:
+        if check_password_hash(user["password"], password):
             session["email"] = user["email"]
             session["name"] = user["name"]
             session["_id"] = str(user["_id"])
