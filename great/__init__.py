@@ -27,11 +27,13 @@ gravatar = Gravatar(app,
                     use_ssl=False,
                     base_url=None)
 
-                    
+
 app.config["SECRET_KEY"] = "sjakjs45454s@#4s8as9s997"
 
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient("mongodb://eduardo:secretPassword@200.137.131.118/classroomdb")
 db = client.classroomdb
+
+print(db.users.count())
 
 from great.controllers import DefaultController
 from great.controllers import ClassController

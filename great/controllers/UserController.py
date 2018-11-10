@@ -17,11 +17,7 @@ def login():
     email = request.form.get("email")
     password = request.form.get("password")
 
-    password = generate_password_hash(request.form.get("password"))
     user = User().getUserByEmail(email)
-
-    print(password)
-    print(user["password"])
 
     if user:
         if check_password_hash(user["password"], password):
@@ -61,9 +57,7 @@ def register():
         user = User(name=name, email=email, password=password)
 
         if User().signUpUser(user):
-            return "OK", 200
+            return redirect("/login/"), 200
 
         else:
-            return "Error", 400
-
-        #return redirect("/classroom/")
+            return render_template("user/register.html", msg="error"), 400
