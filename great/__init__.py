@@ -41,3 +41,5 @@ from great.controllers import UserController
 from great.controllers import TaskController
 from great.controllers import NoticeController
 from great.controllers import InviteController
+
+from great.controllers.quiz import routes, CourseController, QuestionController, TopicController, UserController, TestController, AnswerController, ClassController
