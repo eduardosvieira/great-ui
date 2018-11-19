@@ -1,12 +1,8 @@
 
 from flask import request, session, render_template, jsonify, redirect
-from bson.objectid import ObjectId
-
-from great import app
-from great import db
 
 from flask_mail import Message
-from great import mail
+from app import mail
 
 class Email():
     def __init__(self):
@@ -15,7 +11,7 @@ class Email():
     def send(self, title="", message="", email=""):
         msg = Message(
             title,
-            sender='lawsclassroom@gmail.com',
+            sender='edusvieirap@gmail.com',
             recipients=
             [email])
 
