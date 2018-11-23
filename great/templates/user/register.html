@@ -45,8 +45,13 @@
         <div class="col s12 m6 main-text center">
           <div class="card-panel z-depth-5">
             <form id="register" class="login-form" method="POST" action="/register/">
-              <div class="row">
-              </div>
+              {% if error %}
+                <div class="row">
+                  <div class="input-field col s12 black-text">
+                    <span style="color: red;">{{ error }}</span>
+                  </div>
+                </div>
+              {% endif %}
               <div class="row">
                 <div class="input-field col s12 black-text">
                   <i class="material-icons prefix">account_box</i>

@@ -58,7 +58,7 @@ def register():
         user = User(name=name, email=email, password=password)
 
         if User().signUpUser(user):
-            return redirect("/login/"), 200
+            return redirect("/login/")
 
         else:
-            return render_template("user/register.html", msg="error"), 400
+            return render_template("user/register.html", msg="Cadastro não realizado. Por favor. tente novamente!"), 400
