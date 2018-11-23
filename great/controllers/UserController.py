@@ -33,6 +33,7 @@ def login():
 def logout():
     if '_id' in session:
         session.pop('_id')
+        session.pop('email')
     return redirect(url_for('index'))
 
 #Redirecionando usuário para a página de register
