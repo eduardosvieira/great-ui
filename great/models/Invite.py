@@ -44,6 +44,16 @@ class Invite():
         except:
             return None
 
+    def getInvitesByUser(self, email):
+        try:
+            invites = db.invites.find({
+                "user.email": email
+            })
+
+            return invites
+        except:
+            return None
+
 
     def deleteInviteById(self, inviteId=0):
         try:
