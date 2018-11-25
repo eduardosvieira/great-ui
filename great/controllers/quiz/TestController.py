@@ -255,7 +255,7 @@ def test(test_id):
                 "test._id" : ObjectId(test_id)
               })
 
-    return render_template("tests/verify.html", test=test, answers=answers, questions=questions)
+    return render_template("quiz/tests/verify.html", test=test, answers=answers, questions=questions)
 
 
 #removendo um teste

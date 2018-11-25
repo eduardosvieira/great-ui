@@ -23,6 +23,8 @@ $(document).ready(function() {
       url: "http://127.0.0.1:5000/quiz/courses/",
       type: "GET",
       success: function(data) {
+        $("#nq-course").empty();
+        
         for(index in data) {
           $("#nq-course").append(createCourse(data[index]));
         }
@@ -98,7 +100,7 @@ $(document).ready(function() {
         for(index in data) {
           $("#nq-topic").append(createTopic(data[index]));
         }
-        
+
         /*Recarregando as configurações de efeitos do Materialize nos selects*/
         $('select').material_select();
       }
