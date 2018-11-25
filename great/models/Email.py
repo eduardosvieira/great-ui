@@ -15,3 +15,6 @@ class Email():
       title,
       sender='lawsclassroom@gmail.com',
       recipients=[email])
+
+    msg.html = message
+    mail.send(msg)

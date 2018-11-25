@@ -32,13 +32,14 @@ def send_invite(class_id):
     if user:
         invite = Invite(user=user, classe=classe, createdAt=createdAt, status="sent")
     else:
+        print(email)
         invite = Invite(user={"email": email}, classe=classe, createdAt=createdAt, status="sent")
 
     invite_id = invite.createInvite(invite)
     title = "Convite Classroom"
     message = "Você foi convidado para participar da turma {0} no Classroom!<br><a href='http://200.137.131.118/classroom/invites/{1}/register/'>Aceitar</a>".format(classe["name"], invite_id)
 
-    e = Email().send(title="Convite Classroom", message=message, email=email)
+    msg = Email().send(title="Convite Classroom", message=message, email=email)
 
     return "OK", 200
 
