@@ -1,5 +1,7 @@
 from flask import session, render_template, redirect, request
 
+from bson.objectid import ObjectId
+
 from great import app
 from great.models.Class import Class
 from great.models.User import User
@@ -37,13 +39,23 @@ def get_class(class_id):
 
     return "error", 400
 
+@app.route("/classroom/classes/<class_id>/student/", methods=["GET"])
+def get_class_student(class_id):
+    if "_id" in session:
+        classe = Class().getClassById(class_id)
+        tasks = Task().getAllTasksByClassId(class_id)
+        notices = Notice().getAllNoticesByClassId(class_id)
+
+        if ObjectId(session["_id"]) in classe["participants"]:
+            return render_template("classes/student.html", classe=classe, tasks=tasks, notices=notices)
+
+    return "error", 400
+
+
 @app.route("/classroom/classes/<class_id>/", methods=["PUT"])
 def update_class(class_id):
     name = request.form.get("name")
     description = request.form.get("description")
-
-    print(name)
-    print(description)
 
     classe = Class(id=class_id, name=name, description=description)
 

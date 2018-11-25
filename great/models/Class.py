@@ -40,6 +40,16 @@ class Class():
         except:
             return None
 
+    def getAllMyClassesByUserId(self, userId):
+        try:
+            classes = db.classes.find({
+                "participants": ObjectId(userId)
+            })
+
+            return classes
+        except:
+            return None
+
 
     def getClassById(self, classId=""):
         try:

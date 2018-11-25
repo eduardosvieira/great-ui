@@ -56,7 +56,40 @@
 
     <div class="card">
       <div class="card-content">
-        <span class="card-title">Turmas Ativas</span>
+        <span class="card-title">Minhas Turmas</span>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Turma</th>
+              <th>Descrição</th>
+              <th>Opção</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for class in my_classes %}
+            <tr>
+                <td>{{ class._id }}</td>
+                <td>{{ class.name }}</td>
+                <td>{{ class.description }}</td>
+              </td>
+                <td class="hide-on-small-only">
+                  <a href="/classroom/classes/{{ class._id }}/student/" data-position="top" data-delay="250" data-tooltip="Entrar na turma" class="btn tooltipped btn-icon green">
+                    <span class="icon"><i class="material-icons">touch_app</i></span>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Minhas Criadas</span>
         <table class="striped">
           <thead>
             <tr>
@@ -94,30 +127,6 @@
 
           </tbody>
         </table>
-      </div>
-      <div class="card-action">
-        <ul class="pagination">
-          <!-- <li class="disabled">
-            <a href="#!" class="teal-text">
-              <i class="material-icons">chevron_left</i>
-            </a>
-          </li>
-          <li class="active green darken-2">
-            <a href="#!" class="white-text">1</a>
-          </li>
-          <li class="waves-effect">
-            <a href="#!" class="teal-text">2</a>
-          </li>
-          <li class="waves-effect">
-            <a href="#!" class="teal-text">3</a>
-          </li>
-
-          <li class="waves-effect">
-            <a href="#!" class="teal-text">
-              <i class="material-icons">chevron_right</i>
-            </a>
-          </li> -->
-        </ul>
       </div>
     </div>
 

@@ -35,11 +35,14 @@ def classroom_index():
         # Pegue do banco de dados as turmas criadas pelo usuário
         classes = Class().getAllClassesByUserId(session["_id"])
 
+        # Pegue do banco de dados as turmas do usuário
+        my_classes = Class().getAllMyClassesByUserId(session["_id"])
+
         # Pegue os convites enviados
         invites = Invite().getInvitesByUser(email=session["email"])
 
         # Renderiza a página principal mostrando as classes do usuário logado
-        return render_template("classroom.html", classes=classes, invites=invites)
+        return render_template("classroom.html", classes=classes, my_classes=my_classes, invites=invites)
 
     # Redireciona o usuário para página de login
     return redirect("/login/")

@@ -14,10 +14,10 @@ def register_invite(invite_id):
         user = User().getUserById(session["_id"])
         invite = Invite().getInviteById(invite_id)
 
-        print(invite["class"])
-
         if user["email"] == invite["user"]["email"]:
             Class().addParticipant(classe=invite["class"], user=user)
+
+            invite().deleteInviteById(invite_id)
 
             return redirect("/classroom/")
 
