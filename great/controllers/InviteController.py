@@ -14,7 +14,7 @@ def register_invite(invite_id):
         user = User().getUserById(session["_id"])
         invite = Invite().getInviteById(invite_id)
 
-        if user["_id"] == invite["user"]["email"]:
+        if user["email"] == invite["user"]["email"]:
             Class().addParticipant(classe=invite["class"], user=user)
 
             return redirect("/classroom/")
