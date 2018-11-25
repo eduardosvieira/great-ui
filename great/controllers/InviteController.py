@@ -14,6 +14,8 @@ def register_invite(invite_id):
         user = User().getUserById(session["_id"])
         invite = Invite().getInviteById(invite_id)
 
+        print(invite["class"])
+
         if user["email"] == invite["user"]["email"]:
             Class().addParticipant(classe=invite["class"], user=user)
 
@@ -32,7 +34,6 @@ def send_invite(class_id):
     if user:
         invite = Invite(user=user, classe=classe, createdAt=createdAt, status="sent")
     else:
-        print(email)
         invite = Invite(user={"email": email}, classe=classe, createdAt=createdAt, status="sent")
 
     invite_id = invite.createInvite(invite)
