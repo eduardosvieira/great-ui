@@ -11,7 +11,7 @@ class Class():
 
 
     def addParticipant(self, user=None, classe=None):
-        db.classes.update({"_id": ObjectId(classe._id)},
+        db.classes.update({"_id": ObjectId(classe.id)},
             {"$addToSet": {"participants": user["_id"]}})
 
         return True
