@@ -192,6 +192,7 @@ $(document).ready(function(){
       /*Melhore esta parte*/
       data: { number: number, easy: level[0], medium: level[1], hard: level[2], type: type},
       success: function(data) {
+          console.log(data);
           for(index in data) {
             $("#questions-list").append(createQuestion(data[index]));
           }

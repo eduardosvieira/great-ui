@@ -47,7 +47,7 @@ def remove_test(test_id):
 def create_test(course, topic):
     number = int(request.form.get("number")) #Número de questões
     type = request.form.get("type"); #Tipo de questão
-    #Esta pode ser melhorada
+    #Esta parte pode ser melhorada
     level = [{ "name" : "easy", "percentage" : float(request.form.get("easy")) },
             { "name" : "medium", "percentage" : float(request.form.get("medium")) },
             { "name" : "difficult", "percentage" : float(request.form.get("hard")) }]
@@ -57,6 +57,7 @@ def create_test(course, topic):
     i = 0
     while(i < 3):
         amount = math.floor(level[i]["percentage"] * (number/100))
+
         if amount != 0:
             limite = db.questions.find(
                      {
@@ -66,6 +67,8 @@ def create_test(course, topic):
                      }).count()
 
             num_random = randint(0, limite)
+
+            print(num_random)
 
             result = db.questions.find({
                 "topic._id" : ObjectId(topic),
