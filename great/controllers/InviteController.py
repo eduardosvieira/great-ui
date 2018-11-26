@@ -14,8 +14,10 @@ def register_invite(invite_id):
         user = User().getUserById(session["_id"])
         invite = Invite().getInviteById(invite_id)
 
-        if user["_id"] == invite["user"]["email"]:
+        if user["email"] == invite["user"]["email"]:
             Class().addParticipant(classe=invite["class"], user=user)
+
+            invite().deleteInviteById(invite_id)
 
             return redirect("/classroom/")
 
@@ -38,7 +40,7 @@ def send_invite(class_id):
     title = "Convite Classroom"
     message = "Você foi convidado para participar da turma {0} no Classroom!<br><a href='http://200.137.131.118/classroom/invites/{1}/register/'>Aceitar</a>".format(classe["name"], invite_id)
 
-    e = Email().send(title="Convite Classroom", message=message, email=email)
+    msg = Email().send(title="Convite Classroom", message=message, email=email)
 
     return "OK", 200
 

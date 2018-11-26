@@ -11,7 +11,7 @@ class Class():
 
 
     def addParticipant(self, user=None, classe=None):
-        db.classes.update({"_id": ObjectId(classe._id)},
+        db.classes.update({"_id": ObjectId(classe["_id"])},
             {"$addToSet": {"participants": user["_id"]}})
 
         return True
@@ -34,6 +34,16 @@ class Class():
         try:
             classes = db.classes.find({
                 "creator._id": ObjectId(userId)
+            })
+
+            return classes
+        except:
+            return None
+
+    def getAllMyClassesByUserId(self, userId):
+        try:
+            classes = db.classes.find({
+                "participants": ObjectId(userId)
             })
 
             return classes

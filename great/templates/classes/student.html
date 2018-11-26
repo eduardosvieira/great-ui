@@ -1,0 +1,150 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<script src="{{ url_for('static', filename='js/classroom.js') }}"></script>
+<script src="{{ url_for('static', filename='js/classes.js') }}"></script>
+<script src="{{ url_for('static', filename='js/tasks.js') }}"></script>
+<script src="{{ url_for('static', filename='js/notices.js') }}"></script>
+
+<!-- SECTIONS:  HEADER-->
+<section class="section green darken-3 white-text">
+  <div class="container">
+    <div class="col s12 ">
+      <a href="{{url_for('dashboard')}}" class="breadcrumb">Dashboard</a>
+      <a href="{{url_for('classroom_index')}}" class="breadcrumb">Classroom</a>
+      <a href="{{url_for('classroom_index')}}" class="breadcrumb">Turmas</a>
+      <a href="{{url_for('get_class', class_id=classe._id )}}" class="breadcrumb">{{ classe.name }}</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Section: Detalhes da Turma -->
+  <section class="section section-visitors grey lighten-4">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <div class="card">
+            <div class="card-content">
+              <input type="hidden" id="classId" value="{{ classe._id }}">
+              <span class="card-title">Detalhes</span>
+              <ul class="collection">
+                <li class="collection-item">Criador: {{ classe.creator.name }}</li>
+                <li class="collection-item">Turma: {{ classe.name }}</li>
+                <li class="collection-item">Código: {{ classe._id }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m12 l12">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Avisos</span>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Aviso</th>
+                    <th>Descrição</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% if notices %}
+                    {% for notice in notices %}
+                      <tr>
+                        <td class="noticeId">{{ notice._id }}</td>
+                        <td>{{ notice.title }}</td>
+                        <td>{{ notice.description }}</td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+
+                </tbody>
+              </table>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Lista de Tarefas da Turma -->
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Tarefas</span>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Tarefa</th>
+                    <th>Descrição</th>
+                    <th>Prazo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if tasks %}
+                    {% for task in tasks %}
+                      <tr>
+                        <td class="taskId">{{ task._id }}</td>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.deadline }}</td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Section: Lista de Participantes -->
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Participantes</span>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Aluno</th>
+                    <th>E-mail</th>
+                  <!--  <th>Último Acesso</th>
+                    <th>Pontuação</th>
+                    <th>%</th>
+                    <th class="hide-on-small-only"></th>-->
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for participante in participants %}
+                  <tr>
+                    <td>{{participante._id}}</td>
+                    <td>{{participante.name}}</td>
+                    <td>{{participante.email}}</td>
+                    <!--<td>{{participante.ultimo_acesso}}</td>
+                    <td>{{participante.pontuacao}}</td>
+                    <td>{{participante.desempenho}}</td>
+                    <td>
+                      <a href="aluno.html" class="btn teal lighten-2"><i class="material-icons">mode_edit</i> DETALHES</a>
+                    </td>-->
+                  </tr>
+                   {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

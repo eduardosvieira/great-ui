@@ -17,15 +17,86 @@
 
 <section class="section section-turmas">
   <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Convites Recebidos</span>
+            <table class="striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Turma</th>
+                  <th>Aceitar</th>
+                  <th>Recusar</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                {% if invites %}
+                  {% for invite in invites %}
+                    <tr>
+                      <td class="inviteId">{{ invite._id }}</td>
+                      <td>{{ invite.class.name }}</td>
+                      <td>
+                        <a href="http://200.137.131.118/classroom/invites/{{ invite._id }}/register/"><i class="material-icons">thumb_up</i></a>
+                      </td>
+                      <td>
+                        <a href="" class="btnDeleteInvite"><i class="material-icons">thumb_down</i></a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                {% endif %}
+
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
     <div class="card">
       <div class="card-content">
-        <span class="card-title">Turmas Ativas</span>
+        <span class="card-title">Minhas Turmas</span>
         <table class="striped">
           <thead>
             <tr>
               <th>#</th>
               <th>Turma</th>
               <th>Descrição</th>
+              <th>Opção</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for class in my_classes %}
+            <tr>
+                <td>{{ class._id }}</td>
+                <td>{{ class.name }}</td>
+                <td>{{ class.description }}</td>
+              </td>
+                <td class="hide-on-small-only">
+                  <a href="/classroom/classes/{{ class._id }}/student/" data-position="top" data-delay="250" data-tooltip="Entrar na turma" class="btn tooltipped btn-icon green">
+                    <span class="icon"><i class="material-icons">touch_app</i></span>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Turmas Criadas</span>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Turma</th>
+              <th>Descrição</th>
+              <th>Opção</th>
             </tr>
           </thead>
           <tbody>
@@ -36,19 +107,12 @@
                 <td>{{ class.description }}</td>
              </td>
                  <td class="hide-on-small-only">
+                   <a href="{{ url_for('get_class', class_id=class._id)}}" data-position="top" data-delay="250" data-tooltip="Entrar na turma" class="btn tooltipped btn-icon green">
+                       <span class="icon"><i class="material-icons">touch_app</i></span>
+                   </a>
                     <a href="/classroom/classes/{{ class._id }}" data-position="top" data-delay="250" data-tooltip="Editar turma" class="btn tooltipped btn-icon green">
                         <span class="icon"><i class="fa fa-edit"></i></span>
                     </a>
-
-
-                    <a href="{{ url_for('get_class', class_id=class._id)}}" data-position="top" data-delay="250" data-tooltip="Entrar na turma" class="btn tooltipped btn-icon green">
-                        <span class="icon"><i class="material-icons">touch_app</i></span>
-                    </a>
-                    <a href="{{ url_for('get_class', class_id=class._id)}}" data-position="top" data-delay="250" data-tooltip="Tópicos"  class="btn tooltipped btn-icon green">
-                        <span class="icon"><i class="fa fa-sitemap"></i></span>
-                    </a>
-
-
                 </td>
 
             </tr>
@@ -57,30 +121,6 @@
 
           </tbody>
         </table>
-      </div>
-      <div class="card-action">
-        <ul class="pagination">
-          <!-- <li class="disabled">
-            <a href="#!" class="teal-text">
-              <i class="material-icons">chevron_left</i>
-            </a>
-          </li>
-          <li class="active green darken-2">
-            <a href="#!" class="white-text">1</a>
-          </li>
-          <li class="waves-effect">
-            <a href="#!" class="teal-text">2</a>
-          </li>
-          <li class="waves-effect">
-            <a href="#!" class="teal-text">3</a>
-          </li>
-
-          <li class="waves-effect">
-            <a href="#!" class="teal-text">
-              <i class="material-icons">chevron_right</i>
-            </a>
-          </li> -->
-        </ul>
       </div>
     </div>
 

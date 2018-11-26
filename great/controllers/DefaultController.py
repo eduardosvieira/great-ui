@@ -1,11 +1,16 @@
 from flask import session, render_template, redirect
 
-from app import app
+from great import app
 from great.models.Class import Class
+from great.models.Invite import Invite
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route("/about/")
+def about():
+    return render_template("about.html")
 
 @app.route('/dashboard/')
 def dashboard():
@@ -30,8 +35,14 @@ def classroom_index():
         # Pegue do banco de dados as turmas criadas pelo usuário
         classes = Class().getAllClassesByUserId(session["_id"])
 
+        # Pegue do banco de dados as turmas do usuário
+        my_classes = Class().getAllMyClassesByUserId(session["_id"])
+
+        # Pegue os convites enviados
+        invites = Invite().getInvitesByUser(email=session["email"])
+
         # Renderiza a página principal mostrando as classes do usuário logado
-        return render_template("classroom.html", classes=classes)
+        return render_template("classroom.html", classes=classes, my_classes=my_classes, invites=invites)
 
     # Redireciona o usuário para página de login
     return redirect("/login/")
