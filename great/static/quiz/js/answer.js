@@ -2,6 +2,11 @@
 
 /**/
 
+var PROTOCOL = window.location.protocol + "//";
+var PORT = ":" + window.location.port;
+var HOSTNAME = window.location.hostname;
+
+var URL = PROTOCOL + HOSTNAME + PORT;
 
 $(document).ready(function(){
   /*Habilitando o uso de efeitos do Materialize nos selects*/
@@ -10,7 +15,7 @@ $(document).ready(function(){
   /*Inicializando o botão collapse*/
   $(".button-collapse").sideNav();
 
-  var c = $("#test-time").val();
+  var c = $("#test-time").val() * 60;
   var t;
   var timer_is_on = 0;
 
@@ -19,7 +24,7 @@ $(document).ready(function(){
     c = c - 1;
 
     if(c == 0) {
-      window.location.replace("http://127.0.0.1:6543/classroom/");
+      window.location.replace(URL + "/classroom/");
     }
 
     t = setTimeout(function(){
@@ -41,12 +46,12 @@ $(document).ready(function(){
   function sendAnswer(test, answers, values) {
 
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/tests/" + test + "/answers/",
+      url: URL + "/quiz/tests/" + test + "/answers/",
       type: "POST",
       data: {answers: answers, values: values},
       success: function(data) {
         console.log("Test " + test + "answered in " + Date());
-        window.location.replace("http://127.0.0.1:5000/quiz/");
+        window.location.replace(URL + "/classroom/");
       }
     });
   }
@@ -56,6 +61,7 @@ $(document).ready(function(){
     var test = $("#test-id").val(); /*ID do quiz*/
     var values = []; /*lista dos valores do ID de cada resposta*/
     var answers = [];
+
     /*pegando respostas curtas*/
     $(".question").each(function(index, element){
       var resposta = $(this).children(".answer").val();
@@ -88,8 +94,6 @@ $(document).ready(function(){
         values.push(resposta_id);
       }
     });
-
-    console.log(answers);
 
     sendAnswer(test, answers, values);
   });

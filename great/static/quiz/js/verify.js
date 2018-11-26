@@ -3,6 +3,13 @@
 /**/
 
 
+var PROTOCOL = window.location.protocol + "//";
+var PORT = ":" + window.location.port;
+var HOSTNAME = window.location.hostname;
+
+var URL = PROTOCOL + HOSTNAME + PORT;
+
+
 $(document).ready(function(){
   /*Habilitando o uso de efeitos do Materialize nos selects*/
   $('select').material_select();
@@ -10,8 +17,8 @@ $(document).ready(function(){
   /*Inicializando o botão collapse*/
   $(".button-collapse").sideNav();
 
-  /*Inicializando os modais*/
-  $('.modal-trigger').leanModal();
+  /*Habilitando modal*/
+  $('.modal').modal();
 
   /*adicionando um novo campo de opção*/
   $("#btn-add-option").click(function(event) {
@@ -40,6 +47,7 @@ $(document).ready(function(){
     var title = $("#modal-question-title").val();
     var correctAnswer = $(".option:first").val();
     var choices = [];
+    var p = $("#nq-private").prop("checked")
 
     /*pegando as opções da questão*/
     $(".option").each(function(index, element) {
@@ -47,15 +55,16 @@ $(document).ready(function(){
     });
 
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/questions/" + questionId + "/",
+      url: URL + "/quiz/questions/" + questionId + "/",
       type: "PUT",
       data: {
         "title": title,
         "correctAnswer": correctAnswer,
-        "choices": choices
+        "choices": choices,
+        "private": p
       },
       success: function(data) {
-          window.location.replace("http://127.0.0.1:5000/quiz/tests/" + testId + "/answers/");
+          window.location.replace(URL + "/classroom/quiz/tests/" + testId + "/answers/");
       }
     });
 
@@ -66,14 +75,14 @@ $(document).ready(function(){
     var questionId = $(this).siblings(".question-id").val();
 
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/questions/" + questionId + "/",
+      url: URL + "/quiz/questions/" + questionId + "/",
       type: "GET",
       success: function(data) {
 
         $("#modal-question-id").val(data["_id"]);
         $("#modal-question-title").val(data["title"]);
 
-        if(data["type"] == "multipleChoice") {
+        if(data["type"] == "multipleChoice" || data["type"] == "trueOrFalse") {
           $("#options").empty();
 
           $(data["choices"]).each(function(index, element) {
@@ -94,6 +103,25 @@ $(document).ready(function(){
 
             $("#options").append($choice);
           });
+        } else {
+          $("#options").empty();
+
+          var $choice = $("<li />")
+                          .append($("<input />")
+                              .addClass("option")
+                              .attr("value", data["correctAnswer"])
+                              .attr("type", "text"))
+                          .append($("<a />")
+                              .addClass("btn btn-remove-option")
+                              .text("Remover")
+                              .click(function(event) {
+                                $(this).parent().remove();
+                              })
+                                .append($("<i />")
+                                  .addClass("material-icons right")
+                                  .text("remove")));
+
+          $("#options").append($choice);
         }
       }
     });
@@ -104,10 +132,10 @@ $(document).ready(function(){
     var testId = $("#test-id").val();
 
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/tests/" + testId + "/",
+      url: URL + "/quiz/tests/" + testId + "/",
       type: "DELETE",
       success: function(data) {
-        window.location.replace("http://127.0.0.1:5000/quiz/");
+        window.location.replace(URL + "/quiz/");
       }
     });
   });
@@ -115,7 +143,7 @@ $(document).ready(function(){
   /*carregando turmas para compartilhar teste*/
   $("#btn-share-test").click(function(event) {
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/classes/",
+      url: URL + "/quiz/classes/",
       type: "GET",
       success: function(data) {
         for(index in data) {
@@ -145,12 +173,12 @@ $(document).ready(function(){
     var description = $("#modal-test-description").val(); /*nova descrição*/
 
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/tests/" + test + "/",
+      url: URL + "/quiz/tests/" + test + "/",
       type: "PUT",
       data: {name: name, description: description},
       success: function(data) {
         console.log("Test " + test + " updated in " + Date());
-        window.location.replace("http://127.0.0.1:5000/quiz/tests/" + test + "/answers/");
+        window.location.replace(URL + "/quiz/");
       }
     });
   });
@@ -165,12 +193,12 @@ $(document).ready(function(){
     var deadline = $("#deadline").val();
 
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/tests/" + test + "/classes/",
+      url: URL + "/quiz/tests/" + test + "/classes/",
       type: "PUT",
       data: {"test": test, "classe": classe, "title": title, "description": description, "deadline": deadline},
       success: function(data) {
         console.log("Test " + test + "shared in " + Date());
-        window.location.replace("http://127.0.0.1:5000/quiz/tests/" + test + "/answers/");
+        window.location.replace(URL + "/classroom/quiz/tests/" + test + "/answers/");
 
       }
     });

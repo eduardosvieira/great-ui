@@ -1,8 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 import math
 
 from flask import render_template, jsonify, request
 from bson.objectid import ObjectId
-
 
 from great import app
 from great import db
@@ -12,12 +13,14 @@ def update_question(question_id):
     title = request.form.get("title")
     correctAnswer = request.form.get("correctAnswer")
     choices = request.form.getlist("choices[]")
+    private = request.form.get("private")
 
     db.questions.update({"_id": ObjectId(question_id)},
     {"$set": {
         "title": title,
         "correctAnswer": correctAnswer,
-        "choices": choices
+        "choices": choices,
+        "private": private
     }})
 
     return "OK"
@@ -56,6 +59,7 @@ def create_questions():
     correct_answer = request.form.get("correctAnswer")
     topic_id = request.form.get("topic")
     answers = request.form.getlist("answers[]")
+    private = request.form.get("private")
 
     topic = db.topics.find_one({"_id": ObjectId(topic_id)})
 
@@ -66,7 +70,8 @@ def create_questions():
         "level": level,
         "correctAnswer": correct_answer,
         "choices": answers,
-        "topic": topic
+        "topic": topic,
+        "private": private
     }).inserted_id
 
     question = db.questions.find_one({"_id": ObjectId(id)})

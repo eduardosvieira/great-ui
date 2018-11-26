@@ -1,28 +1,27 @@
-from flask import render_template, request, redirect, session
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
+from flask import session, render_template, redirect
+
+from bson.objectid import ObjectId
 
 from great import app
 from great import db
 
-
-#Redirecionando para o índice da aplicação
 @app.route("/quiz/", methods=["GET"])
-def qindex():
+def index_quiz():
+
+    # Verifica se o usuário está logado, procurando pelo email dele na sessão
     if "email" in session:
-        created_tests = db.tests.find(
+
+        # Requisita do banco os quizes criados pelo usuário
+        quizzes = db.tests.find(
                         {
-                            "creator.email" : session["email"]
+                            "creator._id" : ObjectId(session["_id"])
                         })
-        tests = db.tests.find(
-                {
-                    "people" : session["email"]
-                })
 
-        return render_template("quiz/index.html", created_tests=created_tests, tests=tests)
+        # Renderiza a página mostrando os quizes do usuário logado
+        return render_template("quiz/index.html", quizzes=quizzes)
 
+    # Redireciona o usuário para página de login
     return redirect("/login/")
-
-#Redirecionando para dashboard
-@app.route("/quiz/dashboard/", methods=["GET"])
-def qdashboard():
-    return render_template("quiz/dashboard/index.html")

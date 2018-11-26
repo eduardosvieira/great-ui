@@ -2,10 +2,16 @@
 
 /**/
 
+
+var PROTOCOL = window.location.protocol + "//";
+var PORT = ":" + window.location.port;
+var HOSTNAME = window.location.hostname;
+
+
+var URL = PROTOCOL + HOSTNAME + PORT;
+
 $(document).ready(function(){
-  // Initialize collapse button
+  /* Inicialzando collapse button */
   $(".button-collapse").sideNav();
-  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  $('.collapsible').collapsible();
 
 });

@@ -2,19 +2,31 @@
 
 /**/
 
+
+var PROTOCOL = window.location.protocol + "//";
+var PORT = ":" + window.location.port;
+var HOSTNAME = window.location.hostname;
+
+var URL = PROTOCOL + HOSTNAME + PORT;
+
+
 $(document).ready(function() {
+  $('.tabs').tabs();
+
   /*Inicializando o botão collapse*/
   $(".button-collapse").sideNav();
 
   /*atualizando a nota da resposta*/
   function updateGrade(answer, grade) {
+    var testId = $("#test-id").val();
+
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/answers/" + answer + "/",
+      url: URL + "/quiz/answers/" + answer + "/",
       type: "PUT",
       data: {grade: grade},
       success: function(data) {
         console.log("Test's grade " + test + "updated in " + Date());
-        window.location.replace("http://127.0.0.1:5000/quiz/");
+        window.location.replace(URL + "/classroom/quiz/tests/" + testId + "/answers/");
       }
     });
   }

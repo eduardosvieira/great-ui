@@ -2,6 +2,13 @@
 
 /**/
 
+
+var PROTOCOL = window.location.protocol + "//";
+var PORT = ":" + window.location.port;
+var HOSTNAME = window.location.hostname;
+
+var URL = PROTOCOL + HOSTNAME + PORT;
+
 $(document).ready(function(){
   /*Habilitando o uso de efeitos do Materialize nos selects*/
   $('select').material_select();
@@ -10,6 +17,17 @@ $(document).ready(function(){
   $(".button-collapse").sideNav();
   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
   $('.collapsible').collapsible();
+
+  /*Habilitando modal*/
+  $('.modal').modal();
+
+  $(".btn-remove-question-of-test").click(function(event){
+    $(this).parent().remove();
+  });
+
+  $(".btn-remove-question-of-test2").click(function(event){
+    console.log("eduardo");
+  });
 
   function createTest(test) {
     $test = $("<tr />")
@@ -110,21 +128,11 @@ $(document).ready(function(){
     return $question
   }
 
-  /*gerando pdf*/
-  $("#btnGeneratePDF").on("click", function() {
-    var doc = new jsPDF('p', 'mm', [400, 480]);
-
-    doc.fromHTML($("#questions-list").get(0), 20, 20, {
-      "width": 400 });
-
-    doc.save("exam.pdf");
-
-  });
 
   /*Carregando disciplinas disponíveis no BD*/
   function loadCourses() {
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/courses/",
+      url: URL + "/quiz/courses/",
       type: "GET",
       success: function(data) {
         for(index in data) {
@@ -141,7 +149,7 @@ $(document).ready(function(){
   /*Carregando os tópicos no BD*/
   function loadTopics(course) {
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/courses/" + course + "/topics/",
+      url: URL + "/quiz/courses/" + course + "/topics/",
       type: "GET",
       success: function(data) {
         for(index in data) {
@@ -179,7 +187,7 @@ $(document).ready(function(){
   /*Carregando questões consultadas no BD*/
   function loadQuestions(course, topic, number, level, type) {
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/test/" + course + "/" + topic + "/",
+      url: URL + "/quiz/tests/" + course + "/" + topic + "/",
       type: "POST",
       /*Melhore esta parte*/
       data: { number: number, easy: level[0], medium: level[1], hard: level[2], type: type},
@@ -208,16 +216,21 @@ $(document).ready(function(){
 
   /*Salvando teste*/
   function saveTest(name, description, questions, numAttempts, time) {
-      $.ajax({
-        url: "http://127.0.0.1:5000/quiz/tests/",
-        type: "POST",
-        data: {"name": name, "description": description, "questions": questions, "ntime": time, "numAttempts": numAttempts},
-        success: function(data) {
-          console.log("New test saved in " + Date());
-          window.location.replace("http://127.0.0.1:5000/quiz/");
+      console.log("Ok");
+      if(name) {
+        $.ajax({
+          url: URL + "/quiz/tests/",
+          type: "POST",
+          data: {"name": name, "description": description, "questions": questions, "ntime": time, "numAttempts": numAttempts},
+          success: function(data) {
+            console.log("New test saved in " + Date());
+            window.location.replace(URL + "/quiz/");
 
-        }
-      });
+          }
+        });
+      } else {
+        $("#error").css("display", "block").css("color", "red").text("Vocẽ deve escolher um nome para o teste!");
+      }
   }
 
   /*Adicionando evento para o botão de salvar teste*/

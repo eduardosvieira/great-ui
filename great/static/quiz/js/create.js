@@ -2,12 +2,17 @@
 
 /**/
 
+
+var PROTOCOL = window.location.protocol + "//";
+var PORT = ":" + window.location.port;
+var HOSTNAME = window.location.hostname;
+
+var URL = PROTOCOL + HOSTNAME + PORT;
+
+
 $(document).ready(function() {
   /*Habilitando o uso de efeitos do Materialize nos selects*/
   $("select").material_select();
-
-  /*Inicializando os modais*/
-  $(".modal-trigger").leanModal();
 
   /*Criando uma nova disciplina*/
   function createCourse(course) {
@@ -20,11 +25,10 @@ $(document).ready(function() {
   /*Carregando disciplinas disponíveis no BD*/
   function loadCoursesForPainel() {
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/courses/",
+      url: URL + "/quiz/courses/",
       type: "GET",
       success: function(data) {
         $("#nq-course").empty();
-        
         for(index in data) {
           $("#nq-course").append(createCourse(data[index]));
         }
@@ -37,7 +41,7 @@ $(document).ready(function() {
 
   $("#btnCreate").click(function(event) {
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/courses/",
+      url: URL + "/quiz/courses/",
       type: "GET",
       success: function(data) {
         for(index in data) {
@@ -91,7 +95,7 @@ $(document).ready(function() {
     $("#nq-topic").empty(); /*apagando tópicos antigos*/
 
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/courses/" + course + "/topics/",
+      url: URL + "/quiz/courses/" + course + "/topics/",
       type: "GET",
       success: function(data) {
         /*apagando disciplinas anteriores da tela*/
@@ -109,7 +113,6 @@ $(document).ready(function() {
 
   /*Criando uma nova questão*/
   function createQuestion(question) {
-    console.log(question);
     /*Criando questões de resposta curta ou verdadeiro ou falso*/
     if(question["type"] == "shortAnswer" || question["type"] == "trueOrFalse") {
       $question = $("<li />")
@@ -169,18 +172,20 @@ $(document).ready(function() {
     var level = $("#nq-level :checked").val();
     var correctAnswer = $(".option:first").val();
     var answers = [];
+    var p = $("#nq-private").prop("checked")
 
     /*pegando as opções da questão*/
     $(".option").each(function(index, element) {
       answers.push($(this).val());
+
     });
 
     console.log(correctAnswer);
 
     $.ajax({
-      url: "http://127.0.0.1:5000/quiz/questions/",
+      url: URL + "/quiz/questions/",
       type: "POST",
-      data: {title: title, type: type, level: level, topic: topic, correctAnswer: correctAnswer, answers: answers},
+      data: {private: p, title: title, type: type, level: level, topic: topic, correctAnswer: correctAnswer, answers: answers},
       success: function(data) {
           $("#questions-list").append(createQuestion(data))
       }

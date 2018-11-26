@@ -1,9 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 from flask import jsonify, request
-
 
 from great import app
 from great import db
-
 
 #criando nova disciplina
 @app.route("/quiz/courses/", methods=["POST"])

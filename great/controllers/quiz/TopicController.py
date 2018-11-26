@@ -1,10 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 from flask import jsonify, request
 from bson.objectid import ObjectId
 
-
 from great import app
 from great import db
-
 
 #criando novo tópico
 @app.route("/quiz/topics/", methods=["POST"])
