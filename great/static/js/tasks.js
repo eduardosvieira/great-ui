@@ -9,7 +9,7 @@ $(document).ready(function(event) {
   $("#btnCreateTask").on("click", function(event) {
     var classId = $("#classId").val();
     var title = $("#title").val();
-    var description = $("#description").val();
+    var description = $("#mt-description").val();
     var deadline = $("#deadline").val();
     var testId = $("#test :checked").val();
 

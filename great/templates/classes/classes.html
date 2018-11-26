@@ -48,8 +48,8 @@
                     <th>#</th>
                     <th>Aviso</th>
                     <th>Descrição</th>
-                    <th></th>
-                    <th></th>
+                    <th>Editar</th>
+                    <th>Remover</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -84,15 +84,16 @@
         <div class="col s12">
           <div class="card">
             <div class="card-content">
-              <span class="card-title">TAREFAS</span>
+              <span class="card-title">Tarefas</span>
               <table class="striped">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>TAREFA</th>
-                    <th>PRAZO</th>
-                    <th></th>
-                    <th></th>
+                    <th>Tarefa</th>
+                    <th>Descrição</th>
+                    <th>Prazo</th>
+                    <th>Editar</th>
+                    <th>Remover</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -101,6 +102,7 @@
                       <tr>
                         <td class="taskId">{{ task._id }}</td>
                         <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
                         <td>{{ task.deadline }}</td>
                         <td>
                           <a class="callModalEditTask" href="#modalEditTask" class="btn teal lighten-2"><i class="material-icons">mode_edit</i></a>
@@ -123,13 +125,13 @@
         <div class="col s12">
           <div class="card">
             <div class="card-content">
-              <span class="card-title">CONVITES ENVIADOS</span>
+              <span class="card-title">Convites Enviados</span>
               <table class="striped">
                 <thead>
                   <tr>
                     <th>#</th>
                     <th>E-mail</th>
-                    <th></th>
+                    <th>Remover</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -155,7 +157,7 @@
         <div class="col s12">
           <div class="card">
             <div class="card-content">
-              <span class="card-title">PARTICIPANTES</span>
+              <span class="card-title">Participantes</span>
               <table class="striped">
                 <thead>
                   <tr>

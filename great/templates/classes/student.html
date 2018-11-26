@@ -76,13 +76,14 @@
         <div class="col s12">
           <div class="card">
             <div class="card-content">
-              <span class="card-title">TAREFAS</span>
+              <span class="card-title">Tarefas</span>
               <table class="striped">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>TAREFA</th>
-                    <th>PRAZO</th>
+                    <th>Tarefa</th>
+                    <th>Descrição</th>
+                    <th>Prazo</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -91,8 +92,8 @@
                       <tr>
                         <td class="taskId">{{ task._id }}</td>
                         <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
                         <td>{{ task.deadline }}</td>
-
                       </tr>
                     {% endfor %}
                   {% endif %}
@@ -108,7 +109,7 @@
         <div class="col s12">
           <div class="card">
             <div class="card-content">
-              <span class="card-title">PARTICIPANTES</span>
+              <span class="card-title">Participantes</span>
               <table class="striped">
                 <thead>
                   <tr>
@@ -141,7 +142,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </section>
