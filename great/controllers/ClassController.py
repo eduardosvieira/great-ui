@@ -34,8 +34,15 @@ def get_class(class_id):
         notices = Notice().getAllNoticesByClassId(class_id)
         invites = Invite().getAllInvitesByClassId(class_id)
 
+        participants = []
+
+        result = classe["participants"]
+
+        for item in result:
+            participants.append(User().getUserById(str(item)))
+
         if str(classe["creator"]["_id"]) == session["_id"]:
-            return render_template("classes/classes.html", classe=classe, tasks=tasks, notices=notices, invites=invites)
+            return render_template("classes/classes.html", participants=participants, classe=classe, tasks=tasks, notices=notices, invites=invites)
 
     return "error", 400
 
@@ -46,8 +53,15 @@ def get_class_student(class_id):
         tasks = Task().getAllTasksByClassId(class_id)
         notices = Notice().getAllNoticesByClassId(class_id)
 
+        participants = []
+
+        result = classe["participants"]
+
+        for item in result:
+            participants.append(User().getUserById(str(item)))
+
         if ObjectId(session["_id"]) in classe["participants"]:
-            return render_template("classes/student.html", classe=classe, tasks=tasks, notices=notices)
+            return render_template("classes/student.html", participants=participants, classe=classe, tasks=tasks, notices=notices)
 
     return "error", 400
 

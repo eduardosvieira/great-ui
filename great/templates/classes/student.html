@@ -114,33 +114,35 @@
                   <tr>
                     <th>#</th>
                     <th>Aluno</th>
-                    <th>Último Acesso</th>
+                    <th>E-mail</th>
+                  <!--  <th>Último Acesso</th>
                     <th>Pontuação</th>
                     <th>%</th>
-                    <th class="hide-on-small-only"></th>
+                    <th class="hide-on-small-only"></th>-->
                   </tr>
                 </thead>
                 <tbody>
-                  {% for participante in participantes %}
+                  {% for participante in participants %}
                   <tr>
-                    <td>{{participante.id}}</td>
+                    <td>{{participante._id}}</td>
                     <td>{{participante.name}}</td>
-                    <td>{{participante.ultimo_acesso}}</td>
+                    <td>{{participante.email}}</td>
+                    <!--<td>{{participante.ultimo_acesso}}</td>
                     <td>{{participante.pontuacao}}</td>
                     <td>{{participante.desempenho}}</td>
                     <td>
                       <a href="aluno.html" class="btn teal lighten-2"><i class="material-icons">mode_edit</i> DETALHES</a>
-                    </td>
+                    </td>-->
                   </tr>
                    {% endfor %}
 
                 </tbody>
               </table>
             </div>
-
           </div>
         </div>
-        </div>
+        
+      </div>
     </div>
   </section>
 

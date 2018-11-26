@@ -151,6 +151,7 @@
 
             </div>
           </div>
+        </div>
         <div class="col s12">
           <div class="card">
             <div class="card-content">
@@ -160,52 +161,30 @@
                   <tr>
                     <th>#</th>
                     <th>Aluno</th>
-                    <th>Último Acesso</th>
+                    <th>E-mail</th>
+                  <!--  <th>Último Acesso</th>
                     <th>Pontuação</th>
                     <th>%</th>
-                    <th class="hide-on-small-only"></th>
+                    <th class="hide-on-small-only"></th>-->
                   </tr>
                 </thead>
                 <tbody>
-                  {% for participante in participantes %}
+                  {% for participante in participants %}
                   <tr>
-                    <td>{{participante.id}}</td>
+                    <td>{{participante._id}}</td>
                     <td>{{participante.name}}</td>
-                    <td>{{participante.ultimo_acesso}}</td>
+                    <td>{{participante.email}}</td>
+                    <!--<td>{{participante.ultimo_acesso}}</td>
                     <td>{{participante.pontuacao}}</td>
                     <td>{{participante.desempenho}}</td>
                     <td>
                       <a href="aluno.html" class="btn teal lighten-2"><i class="material-icons">mode_edit</i> DETALHES</a>
-                    </td>
+                    </td>-->
                   </tr>
                    {% endfor %}
 
                 </tbody>
               </table>
-            </div>
-            <div class="card-action">
-              <ul class="pagination">
-                <li class="disabled">
-                  <a href="#!" class="teal-text">
-                    <i class="material-icons">chevron_left</i>
-                  </a>
-                </li>
-                <li class="active teal lighten-2">
-                  <a href="#!" class="white-text">1</a>
-                </li>
-                <li class="waves-effect">
-                  <a href="#!" class="teal-text">2</a>
-                </li>
-                <li class="waves-effect">
-                  <a href="#!" class="teal-text">3</a>
-                </li>
-
-                <li class="waves-effect">
-                  <a href="#!" class="teal-text">
-                    <i class="material-icons">chevron_right</i>
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
