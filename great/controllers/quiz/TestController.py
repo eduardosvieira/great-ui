@@ -23,6 +23,29 @@ def get_test_to_add_questions(test_id):
     return render_template("quiz/tests/add_questions_to_test.html", test=test, questions=questions)
 
 
+@app.route("/classroom/api/tests/<test_id>/", methods=["GET"])
+def api_get_test(test_id):
+    try:
+        test = db.tests.find_one({"_id": ObjectId(test_id)})
+
+        questions = []
+        for id in test["questions"]:
+            question = db.questions.find_one({"_id": ObjectId(id)})
+            question["_id"] = str(question["_id"])
+            question["topic"]["_id"] = str(question["topic"]["_id"])
+            question["topic"]["course"]["_id"] = str(question["topic"]["course"]["_id"])
+            questions.append(question)
+
+        test["questions"] = questions
+
+        test["_id"] = str(test["_id"])
+        test["creator"]["_id"] = str(test["creator"]["_id"])
+
+        return jsonify(test)
+    except:
+        return "Ops. Houve um problema ao consultar teste. Você não errou o ID?"
+
+
 #Redirecionando para dashboard
 @app.route("/classroom/quiz/tests/", methods=["GET"])
 def dashboarddd():
