@@ -5,6 +5,8 @@ var PORT = window.location.port;
 var URL = PROTOCOL + "//" + HOSTNAME + ":" + PORT;
 
 $(document).ready(function(event) {
+  $('select').material_select();
+
   /*Evento para cliar uma nova tarefa*/
   $("#btnCreateTask").on("click", function(event) {
     var classId = $("#classId").val();

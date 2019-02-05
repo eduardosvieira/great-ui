@@ -6,6 +6,7 @@
 <script src="{{ url_for('static', filename='js/classes.js') }}"></script>
 <script src="{{ url_for('static', filename='js/tasks.js') }}"></script>
 <script src="{{ url_for('static', filename='js/notices.js') }}"></script>
+<script src="{{ url_for('static', filename='js/tests.js') }}"></script>
 
 <!-- SECTIONS:  HEADER-->
 <section class="section green darken-3 white-text">
@@ -29,6 +30,7 @@
           <div class="card">
             <div class="card-content">
               <input type="hidden" id="classId" value="{{ classe._id }}">
+              <input type="hidden" id="creator_id" value="{{ classe.creator._id }}">
               <span class="card-title">Detalhes</span>
               <ul class="collection">
                 <li class="collection-item">Criador: {{ classe.creator.name }}</li>

@@ -11,6 +11,23 @@ from bson.objectid import ObjectId
 from great import app
 from great import db
 
+@app.route("/api/classroom/users/<user_id>/tests/", methods=["GET"])
+def api_get_tests(user_id):
+    result = db.tests.find({})
+
+    tests = []
+
+    for test in result:
+        t = {
+            "name": test["name"],
+            "_id": str(test["_id"])
+        }
+
+        tests.append(t)
+
+    print(tests)
+    return jsonify(tests)
+
 @app.route("/classroom/quiz/tests/<test_id>/", methods=["GET"])
 def get_test_to_add_questions(test_id):
     test = db.tests.find_one({"_id": ObjectId(test_id)})

@@ -27,6 +27,8 @@ function fillModalEditTask(taskId) {
 
 
 $(document).ready(function() {
+  $('select').material_select();
+
   $("#btn-edit-task").click(function(event) {
     var classId = $("#class-id").val();
     var taskId = $("#modal-edit-task-id").val();
