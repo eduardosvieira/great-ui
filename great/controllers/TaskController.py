@@ -1,5 +1,7 @@
 from flask import request, render_template
 
+from bson.objectid import ObjectId
+
 from great import app
 from great import db
 
@@ -15,7 +17,7 @@ def create_task():
     classId = request.form.get("classId")
     classe = Class().getClassById(classId=classId)
     testId = request.form.get("testId")
-    test = ""
+    test = db.tests.find_one({"_id": ObjectId(testId)})
 
     task = Task(title=title, description=description, createdAt=createdAt, deadline=deadline, classe=classe, test=test)
 
